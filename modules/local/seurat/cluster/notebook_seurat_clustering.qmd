@@ -400,15 +400,20 @@ The @fig-umap-sample sample-based UMAP can be used to evaluate cluster compositi
 #| fig-height: 10
 #| fig-align: center
 
-SCP::CellDimPlot(
-  srt = seurat_object, 
-  group.by = "batch",
-  reduction = "umap",
-  label = TRUE, 
-  label_repel = TRUE,
-  show_stat = TRUE,
-  theme_use = "theme_blank"
-)
+# Skip step if batch column does not exists in metadata
+if("batch" %in% metadata_columns) {
+    SCP::CellDimPlot(
+      srt = seurat_object,
+      group.by = "batch",
+      reduction = "umap",
+      label = TRUE,
+      label_repel = TRUE,
+      show_stat = TRUE,
+      theme_use = "theme_blank"
+    )
+} else {
+    print("Batch column not found in metadata")
+}
 
 ```
 
