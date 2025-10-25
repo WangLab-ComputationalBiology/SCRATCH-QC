@@ -1,4 +1,6 @@
-#!/opt/conda/bin/python
+#!/usr/bin/env python3
+
+####!/opt/conda/bin/python
 
 import os
 import sys
