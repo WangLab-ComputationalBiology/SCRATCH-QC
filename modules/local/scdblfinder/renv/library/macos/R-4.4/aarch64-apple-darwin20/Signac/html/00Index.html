@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head><title>R: Analysis of Single-Cell Chromatin Data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+<h1> Analysis of Single-Cell Chromatin Data
+<img class="toplogo" src="../../../doc/html/Rlogo.svg" alt="[R logo]" />
+</h1>
+<hr/>
+<div style="text-align: center;">
+<a href="../../../doc/html/packages.html"><img class="arrow" src="../../../doc/html/left.jpg" alt="[Up]" /></a>
+<a href="../../../doc/html/index.html"><img class="arrow" src="../../../doc/html/up.jpg" alt="[Top]" /></a>
+</div><h2>Documentation for package &lsquo;Signac&rsquo; version 1.14.0</h2>
+
+<ul><li><a href="../DESCRIPTION">DESCRIPTION file</a>.</li>
+<li><a href="../NEWS">Package NEWS</a>.</li>
+</ul>
+
+<h2>Help Pages</h2>
+
+
+<p style="text-align: center;">
+<a href="# "> </a>
+<a href="#A">A</a>
+<a href="#B">B</a>
+<a href="#C">C</a>
+<a href="#D">D</a>
+<a href="#E">E</a>
+<a href="#F">F</a>
+<a href="#G">G</a>
+<a href="#H">H</a>
+<a href="#I">I</a>
+<a href="#J">J</a>
+<a href="#L">L</a>
+<a href="#M">M</a>
+<a href="#N">N</a>
+<a href="#P">P</a>
+<a href="#R">R</a>
+<a href="#S">S</a>
+<a href="#T">T</a>
+<a href="#U">U</a>
+<a href="#V">V</a>
+<a href="#misc">misc</a>
+</p>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="Signac-package.html">Signac-package</a></td>
+<td>Signac: Analysis of Single-Cell Chromatin Data</td></tr>
+</table>
+
+<h2><a id="A">-- A --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="AccessiblePeaks.html">AccessiblePeaks</a></td>
+<td>Accessible peaks</td></tr>
+<tr><td style="width: 25%;"><a href="AddChromatinModule.html">AddChromatinModule</a></td>
+<td>Add chromatin module</td></tr>
+<tr><td style="width: 25%;"><a href="AddMotifs.html">AddMotifs</a></td>
+<td>Add DNA sequence motif information</td></tr>
+<tr><td style="width: 25%;"><a href="AddMotifs.html">AddMotifs.Assay</a></td>
+<td>Add DNA sequence motif information</td></tr>
+<tr><td style="width: 25%;"><a href="AddMotifs.html">AddMotifs.ChromatinAssay</a></td>
+<td>Add DNA sequence motif information</td></tr>
+<tr><td style="width: 25%;"><a href="AddMotifs.html">AddMotifs.default</a></td>
+<td>Add DNA sequence motif information</td></tr>
+<tr><td style="width: 25%;"><a href="AddMotifs.html">AddMotifs.Seurat</a></td>
+<td>Add DNA sequence motif information</td></tr>
+<tr><td style="width: 25%;"><a href="AddMotifs.html">AddMotifs.StdAssay</a></td>
+<td>Add DNA sequence motif information</td></tr>
+<tr><td style="width: 25%;"><a href="AggregateTiles.html">AggregateTiles</a></td>
+<td>Quantify aggregated genome tiles</td></tr>
+<tr><td style="width: 25%;"><a href="AggregateTiles.html">AggregateTiles.ChromatinAssay</a></td>
+<td>Quantify aggregated genome tiles</td></tr>
+<tr><td style="width: 25%;"><a href="AggregateTiles.html">AggregateTiles.default</a></td>
+<td>Quantify aggregated genome tiles</td></tr>
+<tr><td style="width: 25%;"><a href="AggregateTiles.html">AggregateTiles.Seurat</a></td>
+<td>Quantify aggregated genome tiles</td></tr>
+<tr><td style="width: 25%;"><a href="AlleleFreq.html">AlleleFreq</a></td>
+<td>Compute allele frequencies per cell</td></tr>
+<tr><td style="width: 25%;"><a href="AlleleFreq.html">AlleleFreq.Assay</a></td>
+<td>Compute allele frequencies per cell</td></tr>
+<tr><td style="width: 25%;"><a href="AlleleFreq.html">AlleleFreq.default</a></td>
+<td>Compute allele frequencies per cell</td></tr>
+<tr><td style="width: 25%;"><a href="AlleleFreq.html">AlleleFreq.Seurat</a></td>
+<td>Compute allele frequencies per cell</td></tr>
+<tr><td style="width: 25%;"><a href="AlleleFreq.html">AlleleFreq.StdAssay</a></td>
+<td>Compute allele frequencies per cell</td></tr>
+<tr><td style="width: 25%;"><a href="Annotation.html">Annotation</a></td>
+<td>Annotation</td></tr>
+<tr><td style="width: 25%;"><a href="Annotation.html">Annotation.ChromatinAssay</a></td>
+<td>Annotation</td></tr>
+<tr><td style="width: 25%;"><a href="Annotation.html">Annotation.Seurat</a></td>
+<td>Annotation</td></tr>
+<tr><td style="width: 25%;"><a href="Annotation.html">Annotation&lt;-</a></td>
+<td>Annotation</td></tr>
+<tr><td style="width: 25%;"><a href="Annotation.html">Annotation&lt;-.ChromatinAssay</a></td>
+<td>Annotation</td></tr>
+<tr><td style="width: 25%;"><a href="Annotation.html">Annotation&lt;-.Seurat</a></td>
+<td>Annotation</td></tr>
+<tr><td style="width: 25%;"><a href="AnnotationPlot.html">AnnotationPlot</a></td>
+<td>Plot gene annotations</td></tr>
+<tr><td style="width: 25%;"><a href="as.ChromatinAssay.html">as.ChromatinAssay</a></td>
+<td>Convert objects to a ChromatinAssay</td></tr>
+<tr><td style="width: 25%;"><a href="as.ChromatinAssay.html">as.ChromatinAssay.Assay</a></td>
+<td>Convert objects to a ChromatinAssay</td></tr>
+<tr><td style="width: 25%;"><a href="atac_small.html">atac_small</a></td>
+<td>A small example scATAC-seq dataset</td></tr>
+<tr><td style="width: 25%;"><a href="AverageCounts.html">AverageCounts</a></td>
+<td>Average Counts</td></tr>
+</table>
+
+<h2><a id="B">-- B --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="BigwigTrack.html">BigwigTrack</a></td>
+<td>Plot data from BigWig files</td></tr>
+<tr><td style="width: 25%;"><a href="BinarizeCounts.html">BinarizeCounts</a></td>
+<td>Binarize counts</td></tr>
+<tr><td style="width: 25%;"><a href="BinarizeCounts.html">BinarizeCounts.Assay</a></td>
+<td>Binarize counts</td></tr>
+<tr><td style="width: 25%;"><a href="BinarizeCounts.html">BinarizeCounts.default</a></td>
+<td>Binarize counts</td></tr>
+<tr><td style="width: 25%;"><a href="BinarizeCounts.html">BinarizeCounts.Seurat</a></td>
+<td>Binarize counts</td></tr>
+<tr><td style="width: 25%;"><a href="blacklist_ce10.html">blacklist_ce10</a></td>
+<td>Genomic blacklist regions for C. elegans ce10 (0-based)</td></tr>
+<tr><td style="width: 25%;"><a href="blacklist_ce11.html">blacklist_ce11</a></td>
+<td>Genomic blacklist regions for C. elegans ce11 (0-based)</td></tr>
+<tr><td style="width: 25%;"><a href="blacklist_dm3.html">blacklist_dm3</a></td>
+<td>Genomic blacklist regions for Drosophila dm3 (0-based)</td></tr>
+<tr><td style="width: 25%;"><a href="blacklist_dm6.html">blacklist_dm6</a></td>
+<td>Genomic blacklist regions for Drosophila dm6 (0-based)</td></tr>
+<tr><td style="width: 25%;"><a href="blacklist_hg19.html">blacklist_hg19</a></td>
+<td>Genomic blacklist regions for Human hg19 (0-based)</td></tr>
+<tr><td style="width: 25%;"><a href="blacklist_hg38.html">blacklist_hg38</a></td>
+<td>Genomic blacklist regions for Human GRCh38</td></tr>
+<tr><td style="width: 25%;"><a href="blacklist_hg38_unified.html">blacklist_hg38_unified</a></td>
+<td>Unified genomic blacklist regions for Human GRCh38</td></tr>
+<tr><td style="width: 25%;"><a href="blacklist_mm10.html">blacklist_mm10</a></td>
+<td>Genomic blacklist regions for Mouse mm10 (0-based)</td></tr>
+</table>
+
+<h2><a id="C">-- C --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="CallPeaks.html">CallPeaks</a></td>
+<td>Call peaks</td></tr>
+<tr><td style="width: 25%;"><a href="CallPeaks.html">CallPeaks.ChromatinAssay</a></td>
+<td>Call peaks</td></tr>
+<tr><td style="width: 25%;"><a href="CallPeaks.html">CallPeaks.default</a></td>
+<td>Call peaks</td></tr>
+<tr><td style="width: 25%;"><a href="CallPeaks.html">CallPeaks.Fragment</a></td>
+<td>Call peaks</td></tr>
+<tr><td style="width: 25%;"><a href="CallPeaks.html">CallPeaks.Seurat</a></td>
+<td>Call peaks</td></tr>
+<tr><td style="width: 25%;"><a href="Cells.html">Cells.Fragment</a></td>
+<td>Set and get cell barcode information for a 'Fragment' object</td></tr>
+<tr><td style="width: 25%;"><a href="Cells-set.html">Cells&lt;-</a></td>
+<td>Set and get cell barcode information for a Fragment object</td></tr>
+<tr><td style="width: 25%;"><a href="Cells.html">Cells&lt;-.Fragment</a></td>
+<td>Set and get cell barcode information for a 'Fragment' object</td></tr>
+<tr><td style="width: 25%;"><a href="CellsPerGroup.html">CellsPerGroup</a></td>
+<td>Cells per group</td></tr>
+<tr><td style="width: 25%;"><a href="ChromatinAssay-class.html">ChromatinAssay</a></td>
+<td>The ChromatinAssay class</td></tr>
+<tr><td style="width: 25%;"><a href="ChromatinAssay-class.html">ChromatinAssay-class</a></td>
+<td>The ChromatinAssay class</td></tr>
+<tr><td style="width: 25%;"><a href="ClosestFeature.html">ClosestFeature</a></td>
+<td>Closest Feature</td></tr>
+<tr><td style="width: 25%;"><a href="ClusterClonotypes.html">ClusterClonotypes</a></td>
+<td>Find relationships between clonotypes</td></tr>
+<tr><td style="width: 25%;"><a href="CombineTracks.html">CombineTracks</a></td>
+<td>Combine genome region plots</td></tr>
+<tr><td style="width: 25%;"><a href="ConnectionsToLinks.html">ConnectionsToLinks</a></td>
+<td>Cicero connections to links</td></tr>
+<tr><td style="width: 25%;"><a href="ConvertMotifID.html">ConvertMotifID</a></td>
+<td>Convert between motif name and motif ID</td></tr>
+<tr><td style="width: 25%;"><a href="ConvertMotifID.html">ConvertMotifID.Assay</a></td>
+<td>Convert between motif name and motif ID</td></tr>
+<tr><td style="width: 25%;"><a href="ConvertMotifID.html">ConvertMotifID.ChromatinAssay</a></td>
+<td>Convert between motif name and motif ID</td></tr>
+<tr><td style="width: 25%;"><a href="ConvertMotifID.html">ConvertMotifID.default</a></td>
+<td>Convert between motif name and motif ID</td></tr>
+<tr><td style="width: 25%;"><a href="ConvertMotifID.html">ConvertMotifID.Motif</a></td>
+<td>Convert between motif name and motif ID</td></tr>
+<tr><td style="width: 25%;"><a href="ConvertMotifID.html">ConvertMotifID.Seurat</a></td>
+<td>Convert between motif name and motif ID</td></tr>
+<tr><td style="width: 25%;"><a href="ConvertMotifID.html">ConvertMotifID.StdAssay</a></td>
+<td>Convert between motif name and motif ID</td></tr>
+<tr><td style="width: 25%;"><a href="CountFragments.html">CountFragments</a></td>
+<td>Count fragments</td></tr>
+<tr><td style="width: 25%;"><a href="findOverlaps-methods.html">countOverlaps</a></td>
+<td>Find overlapping ranges for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="findOverlaps-methods.html">countOverlaps-method</a></td>
+<td>Find overlapping ranges for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="CountsInRegion.html">CountsInRegion</a></td>
+<td>Counts in region</td></tr>
+<tr><td style="width: 25%;"><a href="coverage-ChromatinAssay-method.html">coverage</a></td>
+<td>Coverage of a ChromatinAssay object</td></tr>
+<tr><td style="width: 25%;"><a href="coverage-ChromatinAssay-method.html">coverage-method</a></td>
+<td>Coverage of a ChromatinAssay object</td></tr>
+<tr><td style="width: 25%;"><a href="CoverageBrowser.html">CoverageBrowser</a></td>
+<td>Genome browser</td></tr>
+<tr><td style="width: 25%;"><a href="CoveragePlot.html">CoveragePlot</a></td>
+<td>Plot Tn5 insertion frequency over a region</td></tr>
+<tr><td style="width: 25%;"><a href="CreateChromatinAssay.html">CreateChromatinAssay</a></td>
+<td>Create ChromatinAssay object</td></tr>
+<tr><td style="width: 25%;"><a href="CreateFragmentObject.html">CreateFragmentObject</a></td>
+<td>Create a Fragment object</td></tr>
+<tr><td style="width: 25%;"><a href="CreateMotifMatrix.html">CreateMotifMatrix</a></td>
+<td>Create motif matrix</td></tr>
+<tr><td style="width: 25%;"><a href="CreateMotifObject.html">CreateMotifObject</a></td>
+<td>Create motif object</td></tr>
+</table>
+
+<h2><a id="D">-- D --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="DensityScatter.html">DensityScatter</a></td>
+<td>Scatterplot colored by point density</td></tr>
+<tr><td style="width: 25%;"><a href="DepthCor.html">DepthCor</a></td>
+<td>Plot sequencing depth correlation</td></tr>
+<tr><td style="width: 25%;"><a href="inter-range-methods.html">disjoin</a></td>
+<td>Inter-range transformations for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="inter-range-methods.html">disjoin-method</a></td>
+<td>Inter-range transformations for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="inter-range-methods.html">disjointBins</a></td>
+<td>Inter-range transformations for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="inter-range-methods.html">disjointBins-method</a></td>
+<td>Inter-range transformations for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="nearest-methods.html">distance</a></td>
+<td>Find the nearest range neighbors for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="nearest-methods.html">distance-method</a></td>
+<td>Find the nearest range neighbors for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="nearest-methods.html">distanceToNearest</a></td>
+<td>Find the nearest range neighbors for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="nearest-methods.html">distanceToNearest-method</a></td>
+<td>Find the nearest range neighbors for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="DownsampleFeatures.html">DownsampleFeatures</a></td>
+<td>Downsample Features</td></tr>
+</table>
+
+<h2><a id="E">-- E --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="ExpressionPlot.html">ExpressionPlot</a></td>
+<td>Plot gene expression</td></tr>
+<tr><td style="width: 25%;"><a href="Extend.html">Extend</a></td>
+<td>Extend</td></tr>
+</table>
+
+<h2><a id="F">-- F --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="FeatureMatrix.html">FeatureMatrix</a></td>
+<td>Feature Matrix</td></tr>
+<tr><td style="width: 25%;"><a href="FilterCells.html">FilterCells</a></td>
+<td>Filter cells from fragment file</td></tr>
+<tr><td style="width: 25%;"><a href="FindClonotypes.html">FindClonotypes</a></td>
+<td>Find clonotypes</td></tr>
+<tr><td style="width: 25%;"><a href="FindMotifs.html">FindMotifs</a></td>
+<td>FindMotifs</td></tr>
+<tr><td style="width: 25%;"><a href="findOverlaps-methods.html">findOverlaps</a></td>
+<td>Find overlapping ranges for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="findOverlaps-methods.html">findOverlaps-method</a></td>
+<td>Find overlapping ranges for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="findOverlaps-methods.html">findOverlaps-methods</a></td>
+<td>Find overlapping ranges for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="FindTopFeatures.html">FindTopFeatures</a></td>
+<td>Find most frequently observed features</td></tr>
+<tr><td style="width: 25%;"><a href="FindTopFeatures.html">FindTopFeatures.Assay</a></td>
+<td>Find most frequently observed features</td></tr>
+<tr><td style="width: 25%;"><a href="FindTopFeatures.html">FindTopFeatures.default</a></td>
+<td>Find most frequently observed features</td></tr>
+<tr><td style="width: 25%;"><a href="FindTopFeatures.html">FindTopFeatures.Seurat</a></td>
+<td>Find most frequently observed features</td></tr>
+<tr><td style="width: 25%;"><a href="FindTopFeatures.html">FindTopFeatures.StdAssay</a></td>
+<td>Find most frequently observed features</td></tr>
+<tr><td style="width: 25%;"><a href="nearest-methods.html">follow</a></td>
+<td>Find the nearest range neighbors for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="nearest-methods.html">follow-method</a></td>
+<td>Find the nearest range neighbors for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="Footprint.html">Footprint</a></td>
+<td>Transcription factor footprinting analysis</td></tr>
+<tr><td style="width: 25%;"><a href="Footprint.html">Footprint.ChromatinAssay</a></td>
+<td>Transcription factor footprinting analysis</td></tr>
+<tr><td style="width: 25%;"><a href="Footprint.html">Footprint.Seurat</a></td>
+<td>Transcription factor footprinting analysis</td></tr>
+<tr><td style="width: 25%;"><a href="FractionCountsInRegion.html">FractionCountsInRegion</a></td>
+<td>Fraction of counts in a genomic region</td></tr>
+<tr><td style="width: 25%;"><a href="Fragment-class.html">Fragment</a></td>
+<td>The Fragment class</td></tr>
+<tr><td style="width: 25%;"><a href="Fragment-class.html">Fragment-class</a></td>
+<td>The Fragment class</td></tr>
+<tr><td style="width: 25%;"><a href="FragmentHistogram.html">FragmentHistogram</a></td>
+<td>Plot fragment length histogram</td></tr>
+<tr><td style="width: 25%;"><a href="Fragments.html">Fragments</a></td>
+<td>Get the Fragment objects</td></tr>
+<tr><td style="width: 25%;"><a href="Fragments.html">Fragments.ChromatinAssay</a></td>
+<td>Get the Fragment objects</td></tr>
+<tr><td style="width: 25%;"><a href="Fragments.html">Fragments.Seurat</a></td>
+<td>Get the Fragment objects</td></tr>
+<tr><td style="width: 25%;"><a href="Fragments.html">Fragments&lt;-</a></td>
+<td>Get the Fragment objects</td></tr>
+<tr><td style="width: 25%;"><a href="Fragments.html">Fragments&lt;-.ChromatinAssay</a></td>
+<td>Get the Fragment objects</td></tr>
+<tr><td style="width: 25%;"><a href="Fragments.html">Fragments&lt;-.Seurat</a></td>
+<td>Get the Fragment objects</td></tr>
+<tr><td style="width: 25%;"><a href="FRiP.html">FRiP</a></td>
+<td>Calculate fraction of reads in peaks per cell</td></tr>
+</table>
+
+<h2><a id="G">-- G --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="inter-range-methods.html">gaps</a></td>
+<td>Inter-range transformations for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="inter-range-methods.html">gaps-method</a></td>
+<td>Inter-range transformations for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="GeneActivity.html">GeneActivity</a></td>
+<td>Create gene activity matrix</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">genome</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">genome-method</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">genome&lt;--method</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="GenomeBinMatrix.html">GenomeBinMatrix</a></td>
+<td>Genome bin matrix</td></tr>
+<tr><td style="width: 25%;"><a href="GetCellsInRegion.html">GetCellsInRegion</a></td>
+<td>Get cells in a region</td></tr>
+<tr><td style="width: 25%;"><a href="GetFootprintData.html">GetFootprintData</a></td>
+<td>Get footprinting data</td></tr>
+<tr><td style="width: 25%;"><a href="GetFragmentData.html">GetFragmentData</a></td>
+<td>Get Fragment object data</td></tr>
+<tr><td style="width: 25%;"><a href="GetGRangesFromEnsDb.html">GetGRangesFromEnsDb</a></td>
+<td>Extract genomic ranges from EnsDb object</td></tr>
+<tr><td style="width: 25%;"><a href="GetIntersectingFeatures.html">GetIntersectingFeatures</a></td>
+<td>Find intersecting regions between two objects</td></tr>
+<tr><td style="width: 25%;"><a href="GetLinkedGenes.html">GetLinkedGenes</a></td>
+<td>Get genes linked to peaks</td></tr>
+<tr><td style="width: 25%;"><a href="GetLinkedPeaks.html">GetLinkedPeaks</a></td>
+<td>Get peaks linked to genes</td></tr>
+<tr><td style="width: 25%;"><a href="GetMotifData.html">GetMotifData</a></td>
+<td>Retrieve a motif matrix</td></tr>
+<tr><td style="width: 25%;"><a href="GetMotifData.html">GetMotifData.ChromatinAssay</a></td>
+<td>Retrieve a motif matrix</td></tr>
+<tr><td style="width: 25%;"><a href="GetMotifData.html">GetMotifData.Motif</a></td>
+<td>Retrieve a motif matrix</td></tr>
+<tr><td style="width: 25%;"><a href="GetMotifData.html">GetMotifData.Seurat</a></td>
+<td>Retrieve a motif matrix</td></tr>
+<tr><td style="width: 25%;"><a href="GetTSSPositions.html">GetTSSPositions</a></td>
+<td>Find transcriptional start sites</td></tr>
+<tr><td style="width: 25%;"><a href="granges-methods.html">granges</a></td>
+<td>Access genomic ranges for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="granges-methods.html">granges-method</a></td>
+<td>Access genomic ranges for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="granges-methods.html">granges-methods</a></td>
+<td>Access genomic ranges for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="GRangesToString.html">GRangesToString</a></td>
+<td>GRanges to String</td></tr>
+</table>
+
+<h2><a id="H">-- H --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="head.Fragment.html">head.Fragment</a></td>
+<td>Return the first rows of a fragment file</td></tr>
+</table>
+
+<h2><a id="I">-- I --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="IdentifyVariants.html">IdentifyVariants</a></td>
+<td>Identify mitochondrial variants</td></tr>
+<tr><td style="width: 25%;"><a href="IdentifyVariants.html">IdentifyVariants.Assay</a></td>
+<td>Identify mitochondrial variants</td></tr>
+<tr><td style="width: 25%;"><a href="IdentifyVariants.html">IdentifyVariants.default</a></td>
+<td>Identify mitochondrial variants</td></tr>
+<tr><td style="width: 25%;"><a href="IdentifyVariants.html">IdentifyVariants.Seurat</a></td>
+<td>Identify mitochondrial variants</td></tr>
+<tr><td style="width: 25%;"><a href="IdentifyVariants.html">IdentifyVariants.StdAssay</a></td>
+<td>Identify mitochondrial variants</td></tr>
+<tr><td style="width: 25%;"><a href="InsertionBias.html">InsertionBias</a></td>
+<td>Compute Tn5 insertion bias</td></tr>
+<tr><td style="width: 25%;"><a href="InsertionBias.html">InsertionBias.ChromatinAssay</a></td>
+<td>Compute Tn5 insertion bias</td></tr>
+<tr><td style="width: 25%;"><a href="InsertionBias.html">InsertionBias.Seurat</a></td>
+<td>Compute Tn5 insertion bias</td></tr>
+<tr><td style="width: 25%;"><a href="inter-range-methods.html">inter-range-methods</a></td>
+<td>Inter-range transformations for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="IntersectMatrix.html">IntersectMatrix</a></td>
+<td>Intersect genomic coordinates with matrix rows</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">isCircular</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">isCircular-method</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">isCircular&lt;--method</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="inter-range-methods.html">isDisjoint</a></td>
+<td>Inter-range transformations for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="inter-range-methods.html">isDisjoint-method</a></td>
+<td>Inter-range transformations for ChromatinAssay objects</td></tr>
+</table>
+
+<h2><a id="J">-- J --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="Jaccard.html">Jaccard</a></td>
+<td>Calculate the Jaccard index between two matrices</td></tr>
+</table>
+
+<h2><a id="L">-- L --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="LinkPeaks.html">LinkPeaks</a></td>
+<td>Link peaks to genes</td></tr>
+<tr><td style="width: 25%;"><a href="LinkPlot.html">LinkPlot</a></td>
+<td>Plot linked genomic elements</td></tr>
+<tr><td style="width: 25%;"><a href="Links.html">Links</a></td>
+<td>Get or set links information</td></tr>
+<tr><td style="width: 25%;"><a href="Links.html">Links.ChromatinAssay</a></td>
+<td>Get or set links information</td></tr>
+<tr><td style="width: 25%;"><a href="Links.html">Links.Seurat</a></td>
+<td>Get or set links information</td></tr>
+<tr><td style="width: 25%;"><a href="Links.html">Links&lt;-</a></td>
+<td>Get or set links information</td></tr>
+<tr><td style="width: 25%;"><a href="Links.html">Links&lt;-.ChromatinAssay</a></td>
+<td>Get or set links information</td></tr>
+<tr><td style="width: 25%;"><a href="Links.html">Links&lt;-.Seurat</a></td>
+<td>Get or set links information</td></tr>
+<tr><td style="width: 25%;"><a href="LookupGeneCoords.html">LookupGeneCoords</a></td>
+<td>Get gene coordinates</td></tr>
+</table>
+
+<h2><a id="M">-- M --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="MatchRegionStats.html">MatchRegionStats</a></td>
+<td>Match DNA sequence characteristics</td></tr>
+<tr><td style="width: 25%;"><a href="Motif-class.html">Motif</a></td>
+<td>The Motif class</td></tr>
+<tr><td style="width: 25%;"><a href="Motif-class.html">Motif-class</a></td>
+<td>The Motif class</td></tr>
+<tr><td style="width: 25%;"><a href="MotifCounts.html">MotifCounts</a></td>
+<td>Count fragments surrounding motif sites</td></tr>
+<tr><td style="width: 25%;"><a href="MotifPlot.html">MotifPlot</a></td>
+<td>Plot DNA sequence motif</td></tr>
+<tr><td style="width: 25%;"><a href="Motifs.html">Motifs</a></td>
+<td>Get or set a motif information</td></tr>
+<tr><td style="width: 25%;"><a href="Motifs.html">Motifs.ChromatinAssay</a></td>
+<td>Get or set a motif information</td></tr>
+<tr><td style="width: 25%;"><a href="Motifs.html">Motifs.Seurat</a></td>
+<td>Get or set a motif information</td></tr>
+<tr><td style="width: 25%;"><a href="Motifs.html">Motifs&lt;-</a></td>
+<td>Get or set a motif information</td></tr>
+<tr><td style="width: 25%;"><a href="Motifs.html">Motifs&lt;-.ChromatinAssay</a></td>
+<td>Get or set a motif information</td></tr>
+<tr><td style="width: 25%;"><a href="Motifs.html">Motifs&lt;-.Seurat</a></td>
+<td>Get or set a motif information</td></tr>
+</table>
+
+<h2><a id="N">-- N --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="nearest-methods.html">nearest</a></td>
+<td>Find the nearest range neighbors for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="nearest-methods.html">nearest-method</a></td>
+<td>Find the nearest range neighbors for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="nearest-methods.html">nearest-methods</a></td>
+<td>Find the nearest range neighbors for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="NucleosomeSignal.html">NucleosomeSignal</a></td>
+<td>NucleosomeSignal</td></tr>
+</table>
+
+<h2><a id="P">-- P --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="PeakPlot.html">PeakPlot</a></td>
+<td>Plot peaks in a genomic region</td></tr>
+<tr><td style="width: 25%;"><a href="PlotFootprint.html">PlotFootprint</a></td>
+<td>Plot motif footprinting results</td></tr>
+<tr><td style="width: 25%;"><a href="nearest-methods.html">precede</a></td>
+<td>Find the nearest range neighbors for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="nearest-methods.html">precede-method</a></td>
+<td>Find the nearest range neighbors for ChromatinAssay objects</td></tr>
+</table>
+
+<h2><a id="R">-- R --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="inter-range-methods.html">range</a></td>
+<td>Inter-range transformations for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="inter-range-methods.html">range-method</a></td>
+<td>Inter-range transformations for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="ReadMGATK.html">ReadMGATK</a></td>
+<td>Read MGATK output</td></tr>
+<tr><td style="width: 25%;"><a href="inter-range-methods.html">reduce</a></td>
+<td>Inter-range transformations for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="inter-range-methods.html">reduce-method</a></td>
+<td>Inter-range transformations for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="RegionHeatmap.html">RegionHeatmap</a></td>
+<td>Region heatmap</td></tr>
+<tr><td style="width: 25%;"><a href="RegionMatrix.html">RegionMatrix</a></td>
+<td>Region enrichment analysis</td></tr>
+<tr><td style="width: 25%;"><a href="RegionMatrix.html">RegionMatrix.ChromatinAssay</a></td>
+<td>Region enrichment analysis</td></tr>
+<tr><td style="width: 25%;"><a href="RegionMatrix.html">RegionMatrix.default</a></td>
+<td>Region enrichment analysis</td></tr>
+<tr><td style="width: 25%;"><a href="RegionMatrix.html">RegionMatrix.Seurat</a></td>
+<td>Region enrichment analysis</td></tr>
+<tr><td style="width: 25%;"><a href="RegionPlot.html">RegionPlot</a></td>
+<td>Region plot</td></tr>
+<tr><td style="width: 25%;"><a href="RegionStats.html">RegionStats</a></td>
+<td>Compute base composition information for genomic ranges</td></tr>
+<tr><td style="width: 25%;"><a href="RegionStats.html">RegionStats.ChromatinAssay</a></td>
+<td>Compute base composition information for genomic ranges</td></tr>
+<tr><td style="width: 25%;"><a href="RegionStats.html">RegionStats.default</a></td>
+<td>Compute base composition information for genomic ranges</td></tr>
+<tr><td style="width: 25%;"><a href="RegionStats.html">RegionStats.Seurat</a></td>
+<td>Compute base composition information for genomic ranges</td></tr>
+<tr><td style="width: 25%;"><a href="RunChromVAR.html">RunChromVAR</a></td>
+<td>Run chromVAR</td></tr>
+<tr><td style="width: 25%;"><a href="RunChromVAR.html">RunChromVAR.ChromatinAssay</a></td>
+<td>Run chromVAR</td></tr>
+<tr><td style="width: 25%;"><a href="RunChromVAR.html">RunChromVAR.Seurat</a></td>
+<td>Run chromVAR</td></tr>
+<tr><td style="width: 25%;"><a href="RunSVD.html">RunSVD</a></td>
+<td>Run singular value decomposition</td></tr>
+<tr><td style="width: 25%;"><a href="RunSVD.html">RunSVD.Assay</a></td>
+<td>Run singular value decomposition</td></tr>
+<tr><td style="width: 25%;"><a href="RunSVD.html">RunSVD.default</a></td>
+<td>Run singular value decomposition</td></tr>
+<tr><td style="width: 25%;"><a href="RunSVD.html">RunSVD.Seurat</a></td>
+<td>Run singular value decomposition</td></tr>
+<tr><td style="width: 25%;"><a href="RunSVD.html">RunSVD.StdAssay</a></td>
+<td>Run singular value decomposition</td></tr>
+<tr><td style="width: 25%;"><a href="RunTFIDF.html">RunTFIDF</a></td>
+<td>Compute the term-frequency inverse-document-frequency</td></tr>
+<tr><td style="width: 25%;"><a href="RunTFIDF.html">RunTFIDF.Assay</a></td>
+<td>Compute the term-frequency inverse-document-frequency</td></tr>
+<tr><td style="width: 25%;"><a href="RunTFIDF.html">RunTFIDF.default</a></td>
+<td>Compute the term-frequency inverse-document-frequency</td></tr>
+<tr><td style="width: 25%;"><a href="RunTFIDF.html">RunTFIDF.Seurat</a></td>
+<td>Compute the term-frequency inverse-document-frequency</td></tr>
+<tr><td style="width: 25%;"><a href="RunTFIDF.html">RunTFIDF.StdAssay</a></td>
+<td>Compute the term-frequency inverse-document-frequency</td></tr>
+</table>
+
+<h2><a id="S">-- S --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">seqinfo</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">seqinfo-method</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">seqinfo-methods</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">seqinfo&lt;--method</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">seqlengths</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">seqlengths-method</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">seqlengths&lt;--method</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">seqlevels</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">seqlevels-method</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">seqlevels&lt;--method</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">seqnames</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">seqnames-method</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="seqinfo-methods.html">seqnames&lt;--method</a></td>
+<td>Access and modify sequence information for ChromatinAssay objects</td></tr>
+<tr><td style="width: 25%;"><a href="SetMotifData.html">SetMotifData</a></td>
+<td>Set motif data</td></tr>
+<tr><td style="width: 25%;"><a href="SetMotifData.html">SetMotifData.ChromatinAssay</a></td>
+<td>Set motif data</td></tr>
+<tr><td style="width: 25%;"><a href="SetMotifData.html">SetMotifData.Motif</a></td>
+<td>Set motif data</td></tr>
+<tr><td style="width: 25%;"><a href="SetMotifData.html">SetMotifData.Seurat</a></td>
+<td>Set motif data</td></tr>
+<tr><td style="width: 25%;"><a href="Signac-package.html">Signac</a></td>
+<td>Signac: Analysis of Single-Cell Chromatin Data</td></tr>
+<tr><td style="width: 25%;"><a href="SortIdents.html">SortIdents</a></td>
+<td>Sorts cell metadata variable by similarity using hierarchical clustering</td></tr>
+<tr><td style="width: 25%;"><a href="SplitFragments.html">SplitFragments</a></td>
+<td>Split fragment file by cell identities</td></tr>
+<tr><td style="width: 25%;"><a href="StringToGRanges.html">StringToGRanges</a></td>
+<td>String to GRanges</td></tr>
+<tr><td style="width: 25%;"><a href="subset.Fragment.html">subset.Fragment</a></td>
+<td>Subset a Fragment object</td></tr>
+<tr><td style="width: 25%;"><a href="subset.Motif.html">subset.Motif</a></td>
+<td>Subset a Motif object</td></tr>
+<tr><td style="width: 25%;"><a href="SubsetMatrix.html">SubsetMatrix</a></td>
+<td>Subset matrix rows and columns</td></tr>
+</table>
+
+<h2><a id="T">-- T --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="theme_browser.html">theme_browser</a></td>
+<td>Genome browser theme</td></tr>
+<tr><td style="width: 25%;"><a href="TilePlot.html">TilePlot</a></td>
+<td>Plot integration sites per cell</td></tr>
+<tr><td style="width: 25%;"><a href="TSSEnrichment.html">TSSEnrichment</a></td>
+<td>Compute TSS enrichment score per cell</td></tr>
+<tr><td style="width: 25%;"><a href="TSSPlot.html">TSSPlot</a></td>
+<td>Plot signal enrichment around TSSs</td></tr>
+</table>
+
+<h2><a id="U">-- U --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="UnifyPeaks.html">UnifyPeaks</a></td>
+<td>Unify genomic ranges</td></tr>
+<tr><td style="width: 25%;"><a href="UpdatePath.html">UpdatePath</a></td>
+<td>Update the file path for a Fragment object</td></tr>
+</table>
+
+<h2><a id="V">-- V --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="ValidateCells.html">ValidateCells</a></td>
+<td>Validate cells present in fragment file</td></tr>
+<tr><td style="width: 25%;"><a href="ValidateFragments.html">ValidateFragments</a></td>
+<td>Validate Fragment object</td></tr>
+<tr><td style="width: 25%;"><a href="ValidateHash.html">ValidateHash</a></td>
+<td>Validate hashes for Fragment object</td></tr>
+<tr><td style="width: 25%;"><a href="VariantPlot.html">VariantPlot</a></td>
+<td>Plot strand concordance vs. VMR</td></tr>
+</table>
+
+<h2><a id="misc">-- misc --</a></h2>
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="subset.Motif.html">[.Motif</a></td>
+<td>Subset a Motif object</td></tr>
+</table>
+</div></body></html>

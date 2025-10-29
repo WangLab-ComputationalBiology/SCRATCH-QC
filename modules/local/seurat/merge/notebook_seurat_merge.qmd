@@ -95,7 +95,8 @@ for(sub_directory in c('data', 'figures')) {
 
 metadata <- readr::read_csv(file = input_exp_table)
 metadata <- metadata %>%
-  select(-c(sampleIndex, fastq_1, fastq_2)) %>%
+#   select(-c(sampleIndex, fastq_1, fastq_2)) %>%
+  select(-c(fastq_1, fastq_2)) %>%
   distinct() %>%
   as.data.frame()
 

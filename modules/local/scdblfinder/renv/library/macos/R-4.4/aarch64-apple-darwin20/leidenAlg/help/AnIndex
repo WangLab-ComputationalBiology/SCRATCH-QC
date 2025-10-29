@@ -1,0 +1,9 @@
+as.dendrogram.fakeCommunities	as.dendrogram.fakeCommunities
+exampleGraph	exampleGraph
+find_partition	find_partition
+find_partition_rcpp	find_partition_rcpp
+find_partition_with_rep	find_partition_with_rep
+find_partition_with_rep_rcpp	find_partition_with_rep_rcpp
+leiden.community	leiden.community
+membership.fakeCommunities	membership.fakeCommunities
+rleiden.community	rleiden.community

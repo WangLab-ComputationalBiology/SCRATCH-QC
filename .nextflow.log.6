@@ -1,0 +1,128 @@
+Apr-04 01:19:49.743 [main] DEBUG nextflow.cli.Launcher - $> nextflow run scratch_align_entry.nf -profile singularity --samplesheet ../../GBM/Data/GBM_P1P3_Merged/samples.csv --modality GEX --genome GRCh38
+Apr-04 01:19:49.919 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.10.5
+Apr-04 01:19:49.939 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/sazaidi/.nextflow/plugins; core-plugins: nf-amazon@2.9.2,nf-azure@1.10.2,nf-cloudcache@0.4.2,nf-codecommit@0.2.2,nf-console@1.1.4,nf-google@1.15.4,nf-tower@1.9.3,nf-wave@1.7.4
+Apr-04 01:19:49.957 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Apr-04 01:19:49.958 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Apr-04 01:19:49.961 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Apr-04 01:19:49.999 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Apr-04 01:19:50.022 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/sazaidi/Softwares/SCRATCH-QC-main/nextflow.config
+Apr-04 01:19:50.025 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/sazaidi/Softwares/SCRATCH-QC-main/nextflow.config
+Apr-04 01:19:50.048 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/sazaidi/.nextflow/secrets/store.json
+Apr-04 01:19:50.052 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@323659f8] - activable => nextflow.secret.LocalSecretsProvider@323659f8
+Apr-04 01:19:50.064 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `singularity`
+Apr-04 01:19:50.945 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [test, singularity, seadragon, docker]
+Apr-04 01:19:50.982 [main] DEBUG nextflow.cli.CmdRun - Enabling module binaries
+Apr-04 01:19:50.983 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Apr-04 01:19:50.997 [main] DEBUG nextflow.cli.CmdRun - Launching `scratch_align_entry.nf` [cheesy_meitner] DSL2 - revision: 34ffcbf4b4
+Apr-04 01:19:50.998 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Apr-04 01:19:50.998 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Apr-04 01:19:51.044 [main] DEBUG nextflow.Session - Session UUID: df95c9d7-0418-490c-bfa6-34c4550eb7ef
+Apr-04 01:19:51.044 [main] DEBUG nextflow.Session - Run name: cheesy_meitner
+Apr-04 01:19:51.045 [main] DEBUG nextflow.Session - Executor pool size: 36
+Apr-04 01:19:51.053 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Apr-04 01:19:51.058 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=108; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Apr-04 01:19:51.082 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.10.5 build 5935
+  Created: 04-03-2025 17:55 UTC (11:55 CDT)
+  System: Linux 4.18.0-425.3.1.el8.x86_64
+  Runtime: Groovy 4.0.23 on OpenJDK 64-Bit Server VM 11.0.26+4-post-Ubuntu-1ubuntu124.04
+  Encoding: UTF-8 (UTF-8)
+  Process: 4023561@ldragon4 [172.23.36.8]
+  CPUs: 36 - Mem: 187.5 GB (27.3 GB) - Swap: 15 GB (9.8 GB)
+Apr-04 01:19:51.102 [main] DEBUG nextflow.Session - Work-dir: /home/sazaidi/Softwares/SCRATCH-QC-main/work [gpfs]
+Apr-04 01:19:51.130 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Apr-04 01:19:51.139 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Apr-04 01:19:51.162 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Apr-04 01:19:51.172 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 37; maxThreads: 1000
+Apr-04 01:19:51.244 [main] DEBUG nextflow.Session - Session start
+Apr-04 01:19:51.379 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Apr-04 01:19:51.742 [main] INFO  nextflow.Nextflow - 
+        Parameters:
+
+        Input: /home/sazaidi/GBM/Data/GBM_P1P3_Merged/samples.csv
+        Modality: GEX
+        Genome: GRCh38
+
+    
+Apr-04 01:19:51.878 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name SCRATCH_ALIGN:SAMPLESHEET_CHECK
+Apr-04 01:19:51.880 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:SAMPLESHEET_CHECK` matches process SCRATCH_ALIGN:SAMPLESHEET_CHECK
+Apr-04 01:19:51.890 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 01:19:51.891 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 01:19:51.897 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Apr-04 01:19:51.903 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=36; memory=187.5 GB; capacity=36; pollInterval=100ms; dumpInterval=5m
+Apr-04 01:19:51.905 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Apr-04 01:19:52.011 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name SCRATCH_ALIGN:CELLRANGER_COUNT
+Apr-04 01:19:52.011 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CELLRANGER_COUNT` matches process SCRATCH_ALIGN:CELLRANGER_COUNT
+Apr-04 01:19:52.016 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 01:19:52.016 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 01:19:52.022 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: SCRATCH_ALIGN:CELLRANGER_COUNT, SAMPLESHEET_CHECK, SCRATCH_ALIGN:SAMPLESHEET_CHECK, CELLRANGER_COUNT, CELLRANGER_VDJ
+Apr-04 01:19:52.034 [main] WARN  nextflow.Session - There's no process matching config selector: CELLBENDER
+Apr-04 01:19:52.035 [main] WARN  nextflow.Session - There's no process matching config selector: SEURAT_QUALITY
+Apr-04 01:19:52.036 [main] WARN  nextflow.Session - There's no process matching config selector: HELPER_SUMMARIZE
+Apr-04 01:19:52.036 [main] WARN  nextflow.Session - There's no process matching config selector: SEURAT_MERGE
+Apr-04 01:19:52.036 [main] WARN  nextflow.Session - There's no process matching config selector: SCDBLFINDER
+Apr-04 01:19:52.036 [main] WARN  nextflow.Session - There's no process matching config selector: SEURAT_NORMALIZE
+Apr-04 01:19:52.036 [main] WARN  nextflow.Session - There's no process matching config selector: SEURAT_CLUSTER
+Apr-04 01:19:52.036 [main] DEBUG nextflow.Session - Igniting dataflow network (6)
+Apr-04 01:19:52.046 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > SCRATCH_ALIGN:SAMPLESHEET_CHECK
+Apr-04 01:19:52.046 [PathVisitor-2] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /home/sazaidi/Softwares/SCRATCH-QC-main/assets/template/; pattern: *; options: [checkIfExists:true]
+Apr-04 01:19:52.048 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > SCRATCH_ALIGN:CELLRANGER_COUNT
+Apr-04 01:19:52.051 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_b773e2bf96f2f755: /home/sazaidi/Softwares/SCRATCH-QC-main/./subworkflow/local/../../modules/local/cellranger/vdj/main.nf
+  Script_10ae009de88abd70: /home/sazaidi/Softwares/SCRATCH-QC-main/./subworkflow/local/../../modules/local/cellranger/count/main.nf
+  Script_fb13dfcc01d4b19a: /home/sazaidi/Softwares/SCRATCH-QC-main/scratch_align_entry.nf
+  Script_a5cfd09c5eabc87c: /home/sazaidi/Softwares/SCRATCH-QC-main/./subworkflow/local/scratch_align.nf
+  Script_449d0b692149e3e3: /home/sazaidi/Softwares/SCRATCH-QC-main/./subworkflow/local/../../modules/local/helper/validate/main.nf
+Apr-04 01:19:52.052 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Apr-04 01:19:52.053 [main] DEBUG nextflow.Session - Session await
+Apr-04 01:19:52.163 [Actor Thread 32] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://dustincys/cellranger:8.0.1; path=/home/sazaidi/Softwares/SCRATCH-QC-main/work/singularity/dustincys-cellranger-8.0.1.img
+Apr-04 01:19:52.253 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 01:19:52.255 [Task submitter] INFO  nextflow.Session - [5e/37fc46] Submitted process > SCRATCH_ALIGN:SAMPLESHEET_CHECK (Samplesheet samples.csv)
+Apr-04 01:19:52.305 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: SCRATCH_ALIGN:SAMPLESHEET_CHECK (Samplesheet samples.csv); status: COMPLETED; exit: 127; error: -; workDir: /home/sazaidi/Softwares/SCRATCH-QC-main/work/5e/37fc46faa5233c681cd361edc3ee6f]
+Apr-04 01:19:52.307 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=108; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Apr-04 01:19:52.320 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=SCRATCH_ALIGN:SAMPLESHEET_CHECK (Samplesheet samples.csv); work-dir=/home/sazaidi/Softwares/SCRATCH-QC-main/work/5e/37fc46faa5233c681cd361edc3ee6f
+  error [nextflow.exception.ProcessFailedException]: Process `SCRATCH_ALIGN:SAMPLESHEET_CHECK (Samplesheet samples.csv)` terminated with an error exit status (127)
+Apr-04 01:19:52.337 [TaskFinalizer-1] ERROR nextflow.processor.TaskProcessor - Error executing process > 'SCRATCH_ALIGN:SAMPLESHEET_CHECK (Samplesheet samples.csv)'
+
+Caused by:
+  Process `SCRATCH_ALIGN:SAMPLESHEET_CHECK (Samplesheet samples.csv)` terminated with an error exit status (127)
+
+
+Command executed:
+
+  cp samples.csv samplesheet.valid.csv
+  
+  cat <<-END_VERSIONS > versions.yml
+  "SCRATCH_ALIGN:SAMPLESHEET_CHECK":
+      python: $( echo $(python --version | sed 's/Python //g')
+  END_VERSIONS
+
+Command exit status:
+  127
+
+Command output:
+  (empty)
+
+Command error:
+  env: ‘singularity’: No such file or directory
+
+Work dir:
+  /home/sazaidi/Softwares/SCRATCH-QC-main/work/5e/37fc46faa5233c681cd361edc3ee6f
+
+Container:
+  /home/sazaidi/Softwares/SCRATCH-QC-main/work/singularity/dustincys-cellranger-8.0.1.img
+
+Tip: view the complete command output by changing to the process work dir and entering the command `cat .command.out`
+Apr-04 01:19:52.343 [TaskFinalizer-1] INFO  nextflow.Session - Execution cancelled -- Finishing pending tasks before exit
+Apr-04 01:19:52.346 [main] DEBUG nextflow.Session - Session await > all processes finished
+Apr-04 01:19:52.347 [Actor Thread 37] INFO  nextflow.script.BaseScript - No GEX samples were found. Skipping CELLRANGER_COUNTS process.
+Apr-04 01:19:52.347 [Actor Thread 17] INFO  nextflow.script.BaseScript - No TCR samples were found. Skipping CELLRANGER_VDJ process.
+Apr-04 01:19:52.351 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Apr-04 01:19:52.351 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Apr-04 01:19:52.354 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Apr-04 01:19:52.356 [main] INFO  nextflow.Nextflow - Oops... Something went wrong
+Apr-04 01:19:52.360 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=24ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=6 GB; ]
+Apr-04 01:19:52.552 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Apr-04 01:19:52.589 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Apr-04 01:19:52.590 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

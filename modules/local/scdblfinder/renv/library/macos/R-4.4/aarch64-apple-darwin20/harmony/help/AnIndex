@@ -1,0 +1,13 @@
+%>%	pipe
+cell_lines	cell_lines
+cell_lines_small	cell_lines_small
+harmony	harmony
+HarmonyMatrix	HarmonyMatrix
+harmony_options	harmony_options
+moe_ridge_get_betas	moe_ridge_get_betas
+pbmc.ctrl	pbmc.ctrl
+pbmc.stim	pbmc.stim
+RunHarmony	RunHarmony
+RunHarmony.default	RunHarmony.default
+RunHarmony.Seurat	RunHarmony.Seurat
+RunHarmony.SingleCellExperiment	RunHarmony.SingleCellExperiment

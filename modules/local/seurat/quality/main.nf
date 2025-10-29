@@ -3,8 +3,8 @@ process SEURAT_QUALITY {
     tag "Assessing quality ${sample_id}"
     label 'process_medium'
 
-    container "oandrefonseca/scratch-qc:main"
-
+    // container "oandrefonseca/scratch-qc:main"
+    container "syedsazaidi/scratch-qc:latest"
     input:
         tuple val(sample_id), path(csv_metrics), path(matrices)
         path(notebook_quality)

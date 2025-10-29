@@ -1,0 +1,12 @@
+axis_combmatrix         Convert delimited text labels into a
+                        combination matrix axis
+df_complex_conditions   A fictional biological dataset with a complex
+                        experimental design
+gene_pathway_membership
+                        A fictional dataset describing which genes
+                        belong to certain pathways
+scale_x_mergelist       Merge list columns into character vectors
+scale_x_upset           Scale to make UpSet plots
+theme_combmatrix        Theme for the combination matrix
+tidy_movies             Tidy version of the movies dataset from the
+                        ggplot2 package

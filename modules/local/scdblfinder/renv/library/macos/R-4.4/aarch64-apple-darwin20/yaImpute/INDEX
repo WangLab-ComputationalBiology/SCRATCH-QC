@@ -1,0 +1,47 @@
+AsciiGridImpute         Imputes/Predicts data for Ascii Grid maps
+MoscowMtStJoe           Moscow Mountain and St. Joe Woodlands (Idaho,
+                        USA) Tree and LiDAR Data
+TallyLake               Tally Lake, Flathead National Forest, Montana,
+                        USA
+ann                     Approximate nearest neighbor search routines
+applyMask               Removes neighbors that share (or not) group
+                        membership with targets.
+bestVars                Computes the number of _best_ X-variables
+buildConsensus          Finds the consensus imputations among a list of
+                        yai objects
+compare.yai             Compares different k-NN solutions
+cor.yai                 Correlation between observed and imputed
+correctBias             Correct bias by selecting different near
+                        neighbors
+ensembleImpute          Computes the mean, median, or mode among a list
+                        of impute.yai objects
+errorStats              Compute error components of k-NN imputations
+foruse                  Report a complete imputation
+grmsd                   Generalized Root Mean Square Distance Between
+                        Observed and Imputed Values
+impute.yai              Impute variables from references to targets
+mostused                Tabulate references most often used in
+                        imputation
+newtargets              Finds K nearest neighbors for new target
+                        observations
+notablyDifferent        Finds observations with large differences
+                        between observed and imputed values
+notablyDistant          Find notably distant targets
+plot.compare.yai        Plots a compare.yai object
+plot.notablyDifferent   Plots the scaled root mean square differences
+                        between observed and predicted
+plot.varSel             Boxplot of mean Mahalanobis distances from
+                        varSelection()
+plot.yai                Plot observed verses imputed data
+predict.yai             Generic predict function for class yai
+print.yai               Print a summary of a yai object
+rmsd.yai                Root Mean Square Difference between observed
+                        and imputed
+unionDataJoin           Combines data from several sources
+varSelection            Select variables for imputation models
+vars                    List variables in a yai object
+whatsMax                Find maximum column for each row
+yai                     Find K nearest neighbors
+yaiRFsummary            Build Summary Data For Method RandomForest
+yaiVarImp               Reports or plots importance scores for yai
+                        method randomForest

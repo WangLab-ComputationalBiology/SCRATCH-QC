@@ -1,0 +1,107 @@
+Apr-04 12:27:26.581 [main] DEBUG nextflow.cli.Launcher - $> nextflow run scratch_align_entry.nf -profile singularity --samplesheet ../../GBM/Data/GBM_Trial1-scRNA-Level1-CSF_P1P3-test6/samplesheet.csv --modality GEX --genome GRCh38
+Apr-04 12:27:26.875 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.10.1
+Apr-04 12:27:26.898 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/sazaidi/.nextflow/plugins; core-plugins: nf-amazon@2.9.1,nf-azure@1.10.2,nf-cloudcache@0.4.2,nf-codecommit@0.2.2,nf-console@1.1.4,nf-google@1.15.2,nf-tower@1.9.3,nf-wave@1.7.3
+Apr-04 12:27:26.943 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Apr-04 12:27:26.944 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Apr-04 12:27:26.948 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Apr-04 12:27:26.963 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Apr-04 12:27:26.989 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/nextflow.config
+Apr-04 12:27:26.992 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/nextflow.config
+Apr-04 12:27:27.032 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/sazaidi/.nextflow/secrets/store.json
+Apr-04 12:27:27.037 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@27494e46] - activable => nextflow.secret.LocalSecretsProvider@27494e46
+Apr-04 12:27:27.056 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `singularity`
+Apr-04 12:27:28.231 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [test, singularity, seadragon, docker]
+Apr-04 12:27:28.264 [main] DEBUG nextflow.cli.CmdRun - Enabling module binaries
+Apr-04 12:27:28.266 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Apr-04 12:27:28.297 [main] DEBUG nextflow.cli.CmdRun - Launching `scratch_align_entry.nf` [festering_aryabhata] DSL2 - revision: 34ffcbf4b4
+Apr-04 12:27:28.299 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Apr-04 12:27:28.299 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Apr-04 12:27:28.343 [main] DEBUG nextflow.Session - Session UUID: 56d0a403-8a61-4ad4-8f39-148925fee040
+Apr-04 12:27:28.343 [main] DEBUG nextflow.Session - Run name: festering_aryabhata
+Apr-04 12:27:28.344 [main] DEBUG nextflow.Session - Executor pool size: 32
+Apr-04 12:27:28.350 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Apr-04 12:27:28.355 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=96; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Apr-04 12:27:28.378 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.10.1 build 5930
+  Created: 18-11-2024 12:21 UTC (06:21 CDT)
+  System: Linux 4.18.0-425.3.1.el8.x86_64
+  Runtime: Groovy 4.0.23 on OpenJDK 64-Bit Server VM 21.0.2+13-LTS
+  Encoding: UTF-8 (UTF-8)
+  Process: 967603@tdragon2 [172.23.36.11]
+  CPUs: 32 - Mem: 187.5 GB (98.5 GB) - Swap: 15 GB (15 GB)
+Apr-04 12:27:28.406 [main] DEBUG nextflow.Session - Work-dir: /rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/work [gpfs]
+Apr-04 12:27:28.435 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Apr-04 12:27:28.443 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Apr-04 12:27:28.466 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Apr-04 12:27:28.475 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 33; maxThreads: 1000
+Apr-04 12:27:28.570 [main] DEBUG nextflow.Session - Session start
+Apr-04 12:27:28.703 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Apr-04 12:27:29.118 [main] INFO  nextflow.Nextflow - 
+        Parameters:
+
+        Input: /rsrch8/home/genomic_med/sazaidi/GBM/Data/GBM_Trial1-scRNA-Level1-CSF_P1P3-test6/samplesheet.csv
+        Modality: GEX
+        Genome: GRCh38
+
+    
+Apr-04 12:27:29.263 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name SCRATCH_ALIGN:SAMPLESHEET_CHECK
+Apr-04 12:27:29.265 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:SAMPLESHEET_CHECK` matches process SCRATCH_ALIGN:SAMPLESHEET_CHECK
+Apr-04 12:27:29.276 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 12:27:29.276 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 12:27:29.283 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Apr-04 12:27:29.294 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=32; memory=187.5 GB; capacity=32; pollInterval=100ms; dumpInterval=5m
+Apr-04 12:27:29.297 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Apr-04 12:27:29.427 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name SCRATCH_ALIGN:CELLRANGER_COUNT
+Apr-04 12:27:29.427 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CELLRANGER_COUNT` matches process SCRATCH_ALIGN:CELLRANGER_COUNT
+Apr-04 12:27:29.445 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 12:27:29.445 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 12:27:29.450 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: SCRATCH_ALIGN:CELLRANGER_COUNT, SAMPLESHEET_CHECK, SCRATCH_ALIGN:SAMPLESHEET_CHECK, CELLRANGER_COUNT, CELLRANGER_VDJ
+Apr-04 12:27:29.462 [main] WARN  nextflow.Session - There's no process matching config selector: CELLBENDER
+Apr-04 12:27:29.463 [main] WARN  nextflow.Session - There's no process matching config selector: SEURAT_QUALITY
+Apr-04 12:27:29.463 [main] WARN  nextflow.Session - There's no process matching config selector: HELPER_SUMMARIZE
+Apr-04 12:27:29.463 [main] WARN  nextflow.Session - There's no process matching config selector: SEURAT_MERGE
+Apr-04 12:27:29.463 [main] WARN  nextflow.Session - There's no process matching config selector: SCDBLFINDER
+Apr-04 12:27:29.463 [main] WARN  nextflow.Session - There's no process matching config selector: SEURAT_NORMALIZE
+Apr-04 12:27:29.464 [main] WARN  nextflow.Session - There's no process matching config selector: SEURAT_CLUSTER
+Apr-04 12:27:29.464 [main] DEBUG nextflow.Session - Igniting dataflow network (6)
+Apr-04 12:27:29.470 [PathVisitor-2] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/assets/template/; pattern: *; options: [checkIfExists:true]
+Apr-04 12:27:29.470 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > SCRATCH_ALIGN:SAMPLESHEET_CHECK
+Apr-04 12:27:29.471 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > SCRATCH_ALIGN:CELLRANGER_COUNT
+Apr-04 12:27:29.472 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_6ddd3d46a44c3efc: /rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/./subworkflow/local/../../modules/local/cellranger/count/main.nf
+  Script_fb13dfcc01d4b19a: /rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/scratch_align_entry.nf
+  Script_a5cfd09c5eabc87c: /rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/./subworkflow/local/scratch_align.nf
+  Script_5404b6a62b16eff1: /rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/./subworkflow/local/../../modules/local/cellranger/vdj/main.nf
+  Script_997609a82a89d12e: /rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/./subworkflow/local/../../modules/local/helper/validate/main.nf
+Apr-04 12:27:29.472 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Apr-04 12:27:29.472 [main] DEBUG nextflow.Session - Session await
+Apr-04 12:27:29.535 [Actor Thread 31] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://syedsazaidi/scratch-cellranger8:latest; path=/rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/work/singularity/syedsazaidi-scratch-cellranger8-latest.img
+Apr-04 12:27:29.625 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 12:27:29.627 [Task submitter] INFO  nextflow.Session - [28/6f2f6c] Submitted process > SCRATCH_ALIGN:SAMPLESHEET_CHECK (Samplesheet samplesheet.csv)
+Apr-04 12:27:31.195 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: SCRATCH_ALIGN:SAMPLESHEET_CHECK (Samplesheet samplesheet.csv); status: COMPLETED; exit: 0; error: -; workDir: /rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/work/28/6f2f6ca99663821d7fcb3a758d084f]
+Apr-04 12:27:31.196 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=96; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Apr-04 12:27:31.238 [TaskFinalizer-1] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=96; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Apr-04 12:27:31.246 [Actor Thread 33] INFO  nextflow.script.BaseScript - No TCR samples were found. Skipping CELLRANGER_VDJ process.
+Apr-04 12:27:31.291 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 12:27:31.291 [Task submitter] INFO  nextflow.Session - [f3/db88b8] Submitted process > SCRATCH_ALIGN:CELLRANGER_COUNT (Running GEX on GBM1_DFCI3_S2_CSF_T2__bamtofastq)
+Apr-04 12:27:31.304 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 12:27:31.305 [Task submitter] INFO  nextflow.Session - [1b/5f92d9] Submitted process > SCRATCH_ALIGN:CELLRANGER_COUNT (Running GEX on GBM1_DFCI1_S1_CSF_T1__bamtofastq)
+Apr-04 12:32:29.447 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 3; name: SCRATCH_ALIGN:CELLRANGER_COUNT (Running GEX on GBM1_DFCI3_S2_CSF_T2__bamtofastq); status: RUNNING; exit: -; error: -; workDir: /rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/work/f3/db88b89287d4de1f46d9ea9ee63213]
+~> TaskHandler[id: 2; name: SCRATCH_ALIGN:CELLRANGER_COUNT (Running GEX on GBM1_DFCI1_S1_CSF_T1__bamtofastq); status: RUNNING; exit: -; error: -; workDir: /rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/work/1b/5f92d91a9636f5a66c54cef891bf42]
+Apr-04 12:35:58.416 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: SCRATCH_ALIGN:CELLRANGER_COUNT (Running GEX on GBM1_DFCI1_S1_CSF_T1__bamtofastq); status: COMPLETED; exit: 0; error: -; workDir: /rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/work/1b/5f92d91a9636f5a66c54cef891bf42]
+Apr-04 12:37:29.546 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 3; name: SCRATCH_ALIGN:CELLRANGER_COUNT (Running GEX on GBM1_DFCI3_S2_CSF_T2__bamtofastq); status: RUNNING; exit: -; error: -; workDir: /rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/work/f3/db88b89287d4de1f46d9ea9ee63213]
+Apr-04 12:38:58.581 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: SCRATCH_ALIGN:CELLRANGER_COUNT (Running GEX on GBM1_DFCI3_S2_CSF_T2__bamtofastq); status: COMPLETED; exit: 0; error: -; workDir: /rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/work/f3/db88b89287d4de1f46d9ea9ee63213]
+Apr-04 12:38:58.611 [main] DEBUG nextflow.Session - Session await > all processes finished
+Apr-04 12:38:58.683 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Apr-04 12:38:58.684 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Apr-04 12:38:58.696 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Apr-04 12:39:01.466 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Apr-04 12:39:01.471 [main] INFO  nextflow.Nextflow - 
+Done! Open the following report in your browser -> /rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main/report/index.html
+
+Apr-04 12:39:01.480 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=3; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=5h 18m 29s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=32; peakMemory=128 GB; ]
+Apr-04 12:39:01.608 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Apr-04 12:39:01.693 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Apr-04 12:39:01.694 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

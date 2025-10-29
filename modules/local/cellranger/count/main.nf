@@ -3,7 +3,8 @@ process CELLRANGER_COUNT {
     tag "Running GEX on ${sample}"
     label 'process_high'
 
-    container "dustincys/cellranger:8.0.1"
+    // container "dustincys/cellranger:8.0.1"
+    container "syedsazaidi/scratch-cellranger8:latest"
 
     input:
         tuple val(sample), path(reads)
@@ -27,7 +28,9 @@ process CELLRANGER_COUNT {
                 --transcriptome="${reference.name}" \\
                 --sample="${sample}" \\
                 --localcores=${task.cpus} \\
-                --localmem=${task.memory.toGiga()}
+                --localmem=${task.memory.toGiga()} \\
+                --create-bam true
+                
 
             cat <<-END_VERSIONS > versions.yml
             "${task.process}":

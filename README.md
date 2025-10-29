@@ -110,6 +110,5 @@ This project is available under the GNU General Public License v3.0. See the LIC
 
 ## Contact
 For questions or issues, please contact:
-- oandrefonseca@gmail.com
+- sazaidi@mdanderson.org
 - lwang22@mdanderson.org
-- ychu2@mdanderson.org

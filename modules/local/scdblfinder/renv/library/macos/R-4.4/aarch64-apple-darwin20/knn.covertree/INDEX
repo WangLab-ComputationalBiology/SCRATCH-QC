@@ -1,0 +1,3 @@
+find_knn                kNN search
+knn.covertree           A not-too-fast but accurate kNN implementation
+                        supporting multiple distance measures

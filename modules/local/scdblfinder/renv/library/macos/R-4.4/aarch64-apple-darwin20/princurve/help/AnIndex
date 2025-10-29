@@ -1,0 +1,15 @@
+princurve-package	princurve-package
+get.lam	deprecated
+lines.principal.curve	deprecated
+lines.principal_curve	principal_curve
+plot.principal.curve	deprecated
+plot.principal_curve	principal_curve
+points.principal.curve	deprecated
+points.principal_curve	principal_curve
+principal.curve	deprecated
+principal_curve	principal_curve
+princurve	princurve-package
+project_to_curve	project_to_curve
+smoother_functions	smoother_functions
+start_circle	start_circle
+whiskers	principal_curve
