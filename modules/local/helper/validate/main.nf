@@ -2,7 +2,9 @@ process SAMPLESHEET_CHECK {
     tag "Samplesheet $samplesheet"
     label 'process_single'
 
-    container "nfcore/cellranger:7.1.0"
+    // container "nfcore/cellranger:7.1.0"
+    // container "dustincys/cellranger:8.0.1"
+    container "syedsazaidi/scratch-cellranger8:latest"
 
     input:
         path samplesheet

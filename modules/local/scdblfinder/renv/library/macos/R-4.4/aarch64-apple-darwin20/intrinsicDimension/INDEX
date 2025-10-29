@@ -1,0 +1,33 @@
+addNoise                Add Noise to Data Set
+asPointwiseEstimator    Turn a local estimator into a pointwise
+                        estimator
+cornerPlane             Corner Plane
+cutHyperPlane           Piece of Noisy Hyperplane
+cutHyperSphere          Piece of Noisy Hypersphere
+dancoDimEst             Dimension Estimation With the DANCo and MIND
+                        Methods
+dnoiseNcChi             Transition Functions Describing Noise
+essLocalDimEst          Expected Simplex Skewness Local Dimension
+                        Estimation
+essReference            ESS Reference Values
+hyperBall               Isotropic Distributions With or Without Noise
+hyperCube               Hypercube
+intrinsicDimension      Intrinsic Dimension Estimation and Data on
+                        Manifolds
+knnDimEst               Dimension Estimation from kNN Distances
+localIntrinsicDimension
+                        Intrinsic Dimension Estimation
+m14Manifold             Manifolds from Rozza et al. (2012)
+mHeinManifold           12-dimensional manifold from Hein and Audibert
+                        (2005)
+maxLikGlobalDimEst      Dimension Estimation via Translated Poisson
+                        Distributions
+neighborhoods           Obtaining neighborhoods (local data) from a
+                        data set
+oblongNormal            Oblong Normal Distribution
+pcaLocalDimEst          Local Dimension Estimation with PCA
+pcaOtpmPointwiseDimEst
+                        Dimension Estimation With Optimally Topology
+                        Preserving Maps
+swissRoll               Swiss roll with or without 3-sphere inside
+twinPeaks               Twin Peaks

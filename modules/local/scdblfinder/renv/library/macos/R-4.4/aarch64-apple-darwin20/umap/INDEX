@@ -1,0 +1,7 @@
+predict.umap            project data points onto an existing umap
+                        embedding
+umap                    Computes a manifold approximation and
+                        projection
+umap.defaults           Default configuration for umap
+umap.knn                construct a umap.knn object describing nearest
+                        neighbors

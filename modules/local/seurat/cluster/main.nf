@@ -3,7 +3,8 @@ process SEURAT_CLUSTER {
     tag "Clustering cells"
     label 'process_high'
 
-    container "oandrefonseca/scratch-cluster:main"
+    // container "oandrefonseca/scratch-cluster:main"
+    container "syedsazaidi/scratch-cluster:latest"
 
     input:
         path(seurat_object)

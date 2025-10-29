@@ -72,6 +72,7 @@ library(Seurat)
 library(DT)
 library(SingleCellExperiment)
 library(scDblFinder)
+library(SCP)
 
 # Expanding memory
 options(future.globals.maxSize = n_memory*1024^3)
@@ -169,11 +170,13 @@ colnames(dbl_cluster) <-
 ## Adding metadata
 
 ```{r double_combine_metadata}
+#| echo: true
 
 seurat_object <- AddMetaData(
   seurat_object,
   metadata = dbl_sample
 )
+print(dbl_sample)
 
 seurat_object <- AddMetaData(
   seurat_object,
@@ -207,22 +210,45 @@ datatable(seurat_object@meta.data,
 #| layout-nrow: 1
 
 SCP::CellStatPlot(
-    seurat_object, 
-    stat.by = "class", 
-    group.by = "patient_id", 
+    seurat_object,
+    stat.by = "class",
+    group.by = "patient_id",
     legend.position = "bottom",
     legend.direction = "horizontal",
     label = TRUE
 )
 
 SCP::CellStatPlot(
-    seurat_object, 
-    stat.by = "cluster_class", 
+    seurat_object,
+    stat.by = "cluster_class",
     group.by = "patient_id",
     legend.position = "bottom",
     legend.direction = "horizontal",
     label = TRUE
 )
+# Prepare data from Seurat object metadata
+df <- seurat_object@meta.data %>%
+  dplyr::mutate(
+    SubCellType = as.character(SubCellType),
+    Phase = as.character(Phase)
+  ) %>%
+  dplyr::filter(!is.na(SubCellType), !is.na(Phase)) %>% 
+  dplyr::count(SubCellType, Phase) %>%
+  dplyr::group_by(SubCellType) %>%
+  dplyr::mutate(percent = 100 * n / sum(n))
+
+# Generate stacked bar plot
+ggplot(df, aes(x = SubCellType, y = percent, fill = Phase)) +
+  geom_col() +
+  geom_text(aes(label = paste0(round(percent, 1), "%")),  
+            position = position_stack(vjust = 0.5), size = 3, color = "white") +
+  scale_y_continuous(labels = scales::percent_format(scale = 1), expand = c(0, 0)) +  
+  labs(x = "SubCellType", y = "Percentage", fill = "Phase") +
+  theme_minimal() +
+  theme(legend.position = "right", legend.title = element_text(face = "bold")) +
+  scale_fill_manual(values = c("G1" = "#A6CEE3", "S" = "#1F78B4", "G2M" = "#B2DF8A"))
+
+
 
 ```
 :::{.callout-tip}

@@ -3,7 +3,8 @@ process HELPER_SUMMARIZE {
     tag "Rendering QC Table"
     label 'process_single'
 
-    container "oandrefonseca/scratch-qc:main"
+    // container "oandrefonseca/scratch-qc:main"
+    container "syedsazaidi/scratch-qc:latest"
 
     input:
         path(project_metrics)

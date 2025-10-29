@@ -3,7 +3,8 @@ process SEURAT_NORMALIZE {
     tag "Running normalization and dimensionality reduction"
     label 'process_high'
 
-    container "oandrefonseca/scratch-qc:main"
+    // container "oandrefonseca/scratch-qc:main"
+    // container "syedsazaidi/scratch-qc:latest"
 
     input:
         path(seurat_object)

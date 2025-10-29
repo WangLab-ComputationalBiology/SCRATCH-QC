@@ -1,0 +1,137 @@
+AccessiblePeaks         Accessible peaks
+AddChromatinModule      Add chromatin module
+AddMotifs               Add DNA sequence motif information
+AggregateTiles          Quantify aggregated genome tiles
+AlleleFreq              Compute allele frequencies per cell
+Annotation              Annotation
+AnnotationPlot          Plot gene annotations
+AverageCounts           Average Counts
+BigwigTrack             Plot data from BigWig files
+BinarizeCounts          Binarize counts
+CallPeaks               Call peaks
+Cells.Fragment          Set and get cell barcode information for a
+                        'Fragment' object
+Cells<-                 Set and get cell barcode information for a
+                        Fragment object
+CellsPerGroup           Cells per group
+ChromatinAssay-class    The ChromatinAssay class
+ClosestFeature          Closest Feature
+ClusterClonotypes       Find relationships between clonotypes
+CombineTracks           Combine genome region plots
+ConnectionsToLinks      Cicero connections to links
+ConvertMotifID          Convert between motif name and motif ID
+CountFragments          Count fragments
+CountsInRegion          Counts in region
+CoverageBrowser         Genome browser
+CoveragePlot            Plot Tn5 insertion frequency over a region
+CreateChromatinAssay    Create ChromatinAssay object
+CreateFragmentObject    Create a Fragment object
+CreateMotifMatrix       Create motif matrix
+CreateMotifObject       Create motif object
+DensityScatter          Scatterplot colored by point density
+DepthCor                Plot sequencing depth correlation
+DownsampleFeatures      Downsample Features
+ExpressionPlot          Plot gene expression
+Extend                  Extend
+FRiP                    Calculate fraction of reads in peaks per cell
+FeatureMatrix           Feature Matrix
+FilterCells             Filter cells from fragment file
+FindClonotypes          Find clonotypes
+FindMotifs              FindMotifs
+FindTopFeatures         Find most frequently observed features
+Footprint               Transcription factor footprinting analysis
+FractionCountsInRegion
+                        Fraction of counts in a genomic region
+Fragment-class          The Fragment class
+FragmentHistogram       Plot fragment length histogram
+Fragments               Get the Fragment objects
+GRangesToString         GRanges to String
+GeneActivity            Create gene activity matrix
+GenomeBinMatrix         Genome bin matrix
+GetCellsInRegion        Get cells in a region
+GetFootprintData        Get footprinting data
+GetFragmentData         Get Fragment object data
+GetGRangesFromEnsDb     Extract genomic ranges from EnsDb object
+GetIntersectingFeatures
+                        Find intersecting regions between two objects
+GetLinkedGenes          Get genes linked to peaks
+GetLinkedPeaks          Get peaks linked to genes
+GetMotifData            Retrieve a motif matrix
+GetTSSPositions         Find transcriptional start sites
+IdentifyVariants        Identify mitochondrial variants
+InsertionBias           Compute Tn5 insertion bias
+IntersectMatrix         Intersect genomic coordinates with matrix rows
+Jaccard                 Calculate the Jaccard index between two
+                        matrices
+LinkPeaks               Link peaks to genes
+LinkPlot                Plot linked genomic elements
+Links                   Get or set links information
+LookupGeneCoords        Get gene coordinates
+MatchRegionStats        Match DNA sequence characteristics
+Motif-class             The Motif class
+MotifCounts             Count fragments surrounding motif sites
+MotifPlot               Plot DNA sequence motif
+Motifs                  Get or set a motif information
+NucleosomeSignal        NucleosomeSignal
+PeakPlot                Plot peaks in a genomic region
+PlotFootprint           Plot motif footprinting results
+ReadMGATK               Read MGATK output
+RegionHeatmap           Region heatmap
+RegionMatrix            Region enrichment analysis
+RegionPlot              Region plot
+RegionStats             Compute base composition information for
+                        genomic ranges
+RunChromVAR             Run chromVAR
+RunSVD                  Run singular value decomposition
+RunTFIDF                Compute the term-frequency
+                        inverse-document-frequency
+SetMotifData            Set motif data
+Signac-package          Signac: Analysis of Single-Cell Chromatin Data
+SortIdents              Sorts cell metadata variable by similarity
+                        using hierarchical clustering
+SplitFragments          Split fragment file by cell identities
+StringToGRanges         String to GRanges
+SubsetMatrix            Subset matrix rows and columns
+TSSEnrichment           Compute TSS enrichment score per cell
+TSSPlot                 Plot signal enrichment around TSSs
+TilePlot                Plot integration sites per cell
+UnifyPeaks              Unify genomic ranges
+UpdatePath              Update the file path for a Fragment object
+ValidateCells           Validate cells present in fragment file
+ValidateFragments       Validate Fragment object
+ValidateHash            Validate hashes for Fragment object
+VariantPlot             Plot strand concordance vs. VMR
+as.ChromatinAssay       Convert objects to a ChromatinAssay
+atac_small              A small example scATAC-seq dataset
+blacklist_ce10          Genomic blacklist regions for C. elegans ce10
+                        (0-based)
+blacklist_ce11          Genomic blacklist regions for C. elegans ce11
+                        (0-based)
+blacklist_dm3           Genomic blacklist regions for Drosophila dm3
+                        (0-based)
+blacklist_dm6           Genomic blacklist regions for Drosophila dm6
+                        (0-based)
+blacklist_hg19          Genomic blacklist regions for Human hg19
+                        (0-based)
+blacklist_hg38          Genomic blacklist regions for Human GRCh38
+blacklist_hg38_unified
+                        Unified genomic blacklist regions for Human
+                        GRCh38
+blacklist_mm10          Genomic blacklist regions for Mouse mm10
+                        (0-based)
+coverage,ChromatinAssay-method
+                        Coverage of a ChromatinAssay object
+findOverlaps-methods    Find overlapping ranges for ChromatinAssay
+                        objects
+granges-methods         Access genomic ranges for ChromatinAssay
+                        objects
+head.Fragment           Return the first rows of a fragment file
+inter-range-methods     Inter-range transformations for ChromatinAssay
+                        objects
+nearest-methods         Find the nearest range neighbors for
+                        ChromatinAssay objects
+seqinfo-methods         Access and modify sequence information for
+                        ChromatinAssay objects
+subset.Fragment         Subset a Fragment object
+subset.Motif            Subset a Motif object
+theme_browser           Genome browser theme

@@ -1,0 +1,72 @@
+Animals_na              Animals_na
+SBS5242                 Synthetic subset of the Austrian structural
+                        business statistics data
+VIM-package             Visualization and Imputation of Missing Values
+aggr                    Aggregations for missing/imputed values
+alphablend              Alphablending for colors
+barMiss                 Barplot with information about missing/imputed
+                        values
+bcancer                 Breast cancer Wisconsin data set
+bgmap                   Backgound map
+brittleness             Brittleness index data set
+chorizonDL              C-horizon of the Kola data with missing values
+colSequence             HCL and RGB color sequences
+colic                   Colic horse data set
+collisions              Subset of the collision data
+colormapMiss            Colored map with information about
+                        missing/imputed values
+countInf                Count number of infinite or missing values
+diabetes                Indian Prime Diabetes Data
+evaluation              Error performance measures
+food                    Food consumption
+gapMiss                 Missing value gap statistics
+gowerD                  Computes the extended Gower distance of two
+                        data sets
+growdotMiss             Growing dot map with information about
+                        missing/imputed values
+histMiss                Histogram with information about
+                        missing/imputed values
+hotdeck                 Hot-Deck Imputation
+impPCA                  Iterative EM PCA imputation
+initialise              Initialization of missing values
+irmi                    Iterative robust model-based imputation (IRMI)
+kNN                     k-Nearest Neighbour Imputation
+kola.background         Background map for the Kola project data
+mapMiss                 Map with information about missing/imputed
+                        values
+marginmatrix            Marginplot Matrix
+marginplot              Scatterplot with additional information in the
+                        margins
+matchImpute             Fast matching/imputation based on categorical
+                        variable
+matrixplot              Matrix plot
+maxCat                  Aggregation function for a factor variable
+medianSamp              Aggregation function for a ordinal variable
+mosaicMiss              Mosaic plot with information about
+                        missing/imputed values
+pairsVIM                Scatterplot Matrices
+parcoordMiss            Parallel coordinate plot with information about
+                        missing/imputed values
+pbox                    Parallel boxplots with information about
+                        missing/imputed values
+prepare                 Transformation and standardization
+pulplignin              Pulp lignin content
+rangerImpute            Random Forest Imputation
+regressionImp           Regression Imputation
+rugNA                   Rug representation of missing/imputed values
+sampleCat               Random aggregation function for a factor
+                        variable
+scattJitt               Bivariate jitter plot
+scattMiss               Scatterplot with information about
+                        missing/imputed values
+scattmatrixMiss         Scatterplot matrix with information about
+                        missing/imputed values
+sleep                   Mammal sleep data
+spineMiss               Spineplot with information about
+                        missing/imputed values
+tableMiss               create table with highlighted
+                        missings/imputations
+tao                     Tropical Atmosphere Ocean (TAO) project data
+testdata                Simulated data set for testing purpose
+toydataMiss             Simulated toy data set for examples
+wine                    Wine tasting and price

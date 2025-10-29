@@ -81,6 +81,7 @@ library(ggplot2)
 library(patchwork)
 library(Seurat)
 library(ROGUE)
+library(SCP)
 
 ```
 
@@ -232,7 +233,7 @@ The @fig-umap-plot presentind the overall clustering after running Leiden algori
 ```{r clusters_composition}
 
 seurat_cluster_composition <- seurat_object@meta.data %>%
-  group_by(seurat_clusters, patient_id) %>%
+  group_by(seurat_clusters, orig.ident) %>%
   summarise(
     n_cell = n()
   )
@@ -391,6 +392,8 @@ SCP::CellDimPlot(
 The @fig-umap-sample sample-based UMAP can be used to evaluate cluster composition. Clusters composed of a single sample can be potentially associated with malignant cells.
 :::
 
+
+
 ### Batch-based UMAP
 
 ```{r umap_batch_plot}
@@ -400,15 +403,30 @@ The @fig-umap-sample sample-based UMAP can be used to evaluate cluster compositi
 #| fig-height: 10
 #| fig-align: center
 
-SCP::CellDimPlot(
-  srt = seurat_object, 
-  group.by = "batch",
-  reduction = "umap",
-  label = TRUE, 
-  label_repel = TRUE,
-  show_stat = TRUE,
-  theme_use = "theme_blank"
-)
+# SCP::CellDimPlot(
+#   srt = seurat_object, 
+#   group.by = "batch",
+#   reduction = "umap",
+#   label = TRUE, 
+#   label_repel = TRUE,
+#   show_stat = TRUE,
+#   theme_use = "theme_blank"
+# )
+
+# Check if "batch" is in metadata before running the batch-based UMAP
+if ("batch" %in% colnames(seurat_object@meta.data)) {
+  SCP::CellDimPlot(
+    srt = seurat_object, 
+    group.by = "batch",
+    reduction = "umap",
+    label = TRUE, 
+    label_repel = TRUE,
+    show_stat = TRUE,
+    theme_use = "theme_blank"
+  )
+} else {
+  message("Skipping batch-based UMAP: 'batch' column not found in metadata.")
+}
 
 ```
 
@@ -418,24 +436,45 @@ The @fig-umap-batch displays the batch effect over the cell clusters.
 
 ### Group-based UMAP
 
-```{r umap_group_plot, fig.height = 18, fig.width = 14}
+```{r}
 #| label: fig-umap-multi
-#| fig-cap: 'UMAP'
-#| fig-width: 12
-#| fig-height: 8
-#| fig-align: center
+#| eval: false
 #| column: screen-inset-shaded
+#| fig-align: center
+#| fig-cap: UMAP
+#| fig-height: 8
+#| fig-width: 12
+#| include: false
 #| layout-nrow: 1
 
-SCP::CellDimPlot(
-  srt = seurat_object, 
-  group.by = input_group_plot,
-  reduction = "umap",
-  label = TRUE, 
-  label_repel = TRUE,
-  show_stat = TRUE,
-  theme_use = "theme_blank"
-)
+# SCP::CellDimPlot(
+#   srt = seurat_object, 
+#   group.by = input_group_plot,
+#   reduction = "umap",
+#   label = TRUE, 
+#   label_repel = TRUE,
+#   show_stat = TRUE,
+#   theme_use = "theme_blank"
+# )
+
+# Split input_group_plot (it contains "patient_id;timepoint")
+group_vars <- unlist(strsplit(input_group_plot, ";"))
+
+# Check if all group_vars exist in metadata before running the group-based UMAP
+if (all(group_vars %in% colnames(seurat_object@meta.data))) {
+  SCP::CellDimPlot(
+    srt = seurat_object, 
+    group.by = input_group_plot,
+    reduction = "umap",
+    label = TRUE, 
+    label_repel = TRUE,
+    show_stat = TRUE,
+    theme_use = "theme_blank"
+  )
+} else {
+  message("Skipping group-based UMAP: Some columns in 'patient_id;timepoint' not found in metadata.")
+}
+
 
 ```
 

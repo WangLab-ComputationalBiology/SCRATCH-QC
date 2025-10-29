@@ -1,0 +1,7 @@
+principal.curve         Deprecated functions
+principal_curve         Fit a Principal Curve
+princurve-package       Fit a Principal Curve in Arbitrary Dimension
+project_to_curve        Project a set of points to the closest point on
+                        a curve
+smoother_functions      Smoother functions
+start_circle            Generate circle as initial curve

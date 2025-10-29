@@ -1,0 +1,15 @@
+venn-package	venn_package
+checkZone	venn_internal
+extractInfo	extractInfo
+getBorders	venn_internal
+getCentroid	getCentroid
+getIB	venn_internal
+getICoords	venn_internal
+getInts	venn_internal
+getSCoords	venn_internal
+getSets	venn_internal
+getZones	getZones
+openPlot	venn_internal
+plotRules	venn_internal
+translate2	venn_internal
+venn	venn

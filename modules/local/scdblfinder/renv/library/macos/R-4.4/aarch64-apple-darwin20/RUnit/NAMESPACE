@@ -1,0 +1,48 @@
+######################################################################
+##
+## RUnit
+## =====================================
+##
+## inst/NAMESPACE
+## =====================================
+## initialization of classes, namespace, ...
+##
+##
+##
+##
+## Version
+## =====================================
+##  $Id$
+##
+##
+######################################################################
+
+import(utils)
+import(methods)
+importFrom("graphics", "arrows", "legend", "lines", "plot", "text")
+
+export(".setUp",
+       ".tearDown",
+       "checkTrue",
+       "checkEquals",
+       "checkEqualsNumeric",
+       "checkException",
+       "checkIdentical",
+       "DEACTIVATED",
+       "defineTestSuite",
+       "getErrors",
+       "inspect",
+       "isValidTestSuite",
+       "printTextProtocol",
+       "printHTMLProtocol",
+       "printJUnitProtocol",
+       "printHTML",
+       "runTestSuite",
+       "runTestFile",
+       "tracker")
+
+
+S3method(print, RUnitTestData)
+S3method(summary, RUnitTestData)
+S3method(printHTML, trackInfo)
+S3method(printHTML, default)

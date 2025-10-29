@@ -1,0 +1,4 @@
+DDRTree                 Perform DDRTree construction
+get_major_eigenvalue    Get the top L eigenvalues
+pca_projection_R        Compute the PCA projection
+sqdist_R                calculate the square distance between a, b
