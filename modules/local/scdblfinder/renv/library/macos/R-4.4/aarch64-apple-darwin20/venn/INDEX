@@ -1,0 +1,5 @@
+extractInfo             Extract information about a list object.
+getCentroid             Calculate the centroid of a polygon.
+getZones                Calculate the union(s) of set intersections.
+venn                    Draw and display a Venn diagram
+venn-package            Draw Venn Diagrams

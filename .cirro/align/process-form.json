@@ -1,0 +1,34 @@
+{
+    "ui": {},
+    "form": {
+        "title": "SCRATCH Align",
+        "type": "object",
+        "properties": {
+            "pipeline_parameters": {
+            "title": "Pipeline parameters",
+            "type": "object",
+            "properties": {
+                    "organism": {
+                        "type": "string",
+                        "title": "Organism",
+                        "default": "Human",
+                        "enum": [
+                            "Human",
+                            "Mouse"
+                        ]
+                    },
+                    "modality": {
+                        "type": "string",
+                        "title": "Sequencing modality",
+                        "default": "GEX",
+                        "enum": [
+                            "GEX",
+                            "TCR",
+                            "GEX+TCR"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+site_name: Documentation
+theme: gitbook
+nav:
+  - Home: 'index.md'
+  - Getting started: 
+    - First steps: 'settings.md'
+    - Tutorials: 'tutorial.md'
+    - Pipeline outputs: 'output.md'
+  - Reference: 'reference.md'

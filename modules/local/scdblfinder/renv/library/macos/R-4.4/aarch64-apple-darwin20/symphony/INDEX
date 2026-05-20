@@ -1,0 +1,67 @@
+buildReference          Function for building a Symphony reference
+                        starting from expression matrix
+buildReferenceFromHarmonyObj
+                        Function for building a Symphony reference from
+                        a Harmony object. Useful if you would like your
+                        code to be more modular. Note that you must
+                        have saved vargenes_means_sds and PCA loadings.
+calcPerCellMappingMetric
+                        Per-cell Confidence Score: Calculates the
+                        weighted Mahalanobis distance for the query
+                        cells to reference clusters. Returns a vector
+                        of distance scores, one per query cell. Higher
+                        distance metric indicates less confidence.
+calcPerClusterMappingMetric
+                        Per-cluster Confidence Score: Calculates the
+                        Mahalanobis distance from user-defined query
+                        clusters to their nearest reference centroid
+                        after initial projection into reference PCA
+                        space. All query cells in a cluster get the
+                        same score. Higher distance indicates less
+                        confidence. Due to the instability of
+                        estimating covariance with small numbers of
+                        cells, we do not assign a score to clusters
+                        smaller than u * d, where d is the
+                        dimensionality of the embedding and u is
+                        specified.
+calcknncorr             Calculates the k-NN correlation, which measures
+                        how well the sorted ordering of k nearest
+                        reference neighbors in a gold standard
+                        embedding correlate with the ordering for the
+                        same reference cells in an alternative
+                        embedding (i.e. from reference mapping). NOTE:
+                        it is very important for the order of reference
+                        cells (cols) in gold_ref matches that of
+                        alt_ref (same for matching columns of
+                        gold_query and alt_query).
+calcknncorrWithinQuery
+                        Calculates the k-NN correlation within the
+                        query cells only, which measures how well the
+                        sorted ordering of k nearest query neighbors in
+                        a query de novo PCA embedding correlate with
+                        the ordering for the cells in the reference
+                        mapping embedding.
+evaluate                Function for evaluating F1 by cell type,
+                        adapted from automated cell type identifiaction
+                        benchmarking paper (Abdelaal et al. Genome
+                        Biology, 2019)
+findVariableGenes       Function to find variable genes using mean
+                        variance relationship method
+knnPredict              Predict annotations of query cells from the
+                        reference using k-NN method
+mapQuery                Function for mapping query cells to a Symphony
+                        reference
+pbmcs_exprs_small       Log(CP10k+1) normalized counts matrix (genes by
+                        cells) for 10x PBMCs dataset for vignette.
+pbmcs_meta_small        Metadata for 10x PBMCs dataset for vignette.
+plotReference           Function to plot reference, colored by cell
+                        type
+rowSDs                  Calculate standard deviations by row
+runPCAQueryAlone        Runs a standard PCA pipeline on query (1
+                        batch). Assumes query_exp is already
+                        normalized.
+scaleDataWithStats      Scale data with given mean and standard
+                        deviations
+symphony                symphony
+vargenes_vst            Function to find variable genes using variance
+                        stabilizing transform (vst) method

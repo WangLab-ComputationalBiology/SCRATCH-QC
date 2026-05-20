@@ -1,0 +1,23 @@
+as.dendrogram.fakeCommunities
+                        Returns pre-calculated dendrogram
+exampleGraph            Conos graph
+find_partition          Finds the optimal partition using the Leiden
+                        algorithm
+find_partition_rcpp     Refer to the R function find_partition() For
+                        notes of the graph object, refer to
+                        https://igraph.org/c/doc/igraph-Basic.html
+find_partition_with_rep
+                        Finds the optimal partition using the Leiden
+                        algorithm with replicate starts
+find_partition_with_rep_rcpp
+                        Finds the optimal partition using the Leiden
+                        algorithm
+leiden.community        Leiden algorithm community detection Detects
+                        communities using Leiden algorithm
+                        (implementation copied from
+                        https://github.com/vtraag/leidenalg)
+membership.fakeCommunities
+                        Returns pre-calculated membership factor
+rleiden.community       Recursive leiden communities Constructs an
+                        n-step recursive clustering, using
+                        leiden.community

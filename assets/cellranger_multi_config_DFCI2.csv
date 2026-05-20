@@ -1,0 +1,21 @@
+[gene-expression]
+reference,/rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main_CR9/refdata/refdata-gex-GRCh38-2024-A
+check-library-compatibility,false
+create-bam,true
+
+[feature]
+reference,/rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main_CR9/assets/feature_reference_multi_DFCI2.csv
+
+[libraries]
+fastq_id,fastqs,feature_types
+GBM-DFCI2-S1to6-CSF-CELLS-1_IGO_15328_C_3,/rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main_CR9/Demux_Data,Gene Expression
+GBM-DFCI2-S1to6-CSF-CELLS-1_FB_IGO_15328_D_3,/rsrch8/home/genomic_med/sazaidi/Softwares/SCRATCH-QC-main_CR9/Demux_Data/CITE,Multiplexing Capture
+
+[samples]
+sample_id,cmo_ids
+GBM1_DFCI2_S1_CSF,C0251
+GBM1_DFCI2_S2_CSF,C0252
+GBM1_DFCI2_S3_CSF,C0253
+GBM1_DFCI2_S4_CSF,C0254
+GBM1_DFCI2_S5_CSF,C0255
+GBM1_DFCI2_S6_CSF,C0256

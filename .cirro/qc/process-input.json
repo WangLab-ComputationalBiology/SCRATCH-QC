@@ -1,0 +1,20 @@
+{
+    "input_gex_matrices_path": "$.params.inputs[0].s3|/data/data/SCRATCH_ALIGN:CELLRANGER_COUNT/**/outs/*",
+    "input_exp_table": "$.params.inputs[0].s3|/data/pipeline_info/samplesheet.valid.csv",
+    "outdir": "$.params.dataset.s3|/data/",
+    "organism": "$.params.dataset.paramJson.pipeline_parameters.organism",
+    "modality": "$.params.dataset.paramJson.pipeline_parameters.modality",
+    "thr_estimate_n_cells": "$.params.dataset.paramJson.quality_control_parameters.thr_estimate_n_cells",
+    "thr_mean_reads_per_cells": "$.params.dataset.paramJson.quality_control_parameters.thr_mean_reads_per_cells",
+    "thr_median_genes_per_cell": "$.params.dataset.paramJson.quality_control_parameters.thr_median_genes_per_cell",
+    "thr_median_umi_per_cell": "$.params.dataset.paramJson.quality_control_parameters.thr_median_umi_per_cell",
+    "thr_n_feature_rna_min": "$.params.dataset.paramJson.quality_control_parameters.thr_n_feature_rna_min",
+    "thr_n_feature_rna_max": "$.params.dataset.paramJson.quality_control_parameters.thr_n_feature_rna_max",
+    "thr_percent_mito": "$.params.dataset.paramJson.quality_control_parameters.thr_percent_mito",
+    "expected_cells": "$.params.dataset.paramJson.cellbender_parameters.expected_cells",
+    "total_droplets": "$.params.dataset.paramJson.cellbender_parameters.total_droplets",   
+    "fpr": "$.params.dataset.paramJson.cellbender_parameters.fpr",   
+    "epochs": "$.params.dataset.paramJson.cellbender_parameters.epochs",
+    "skip_cellbender": "$.params.dataset.paramJson.cellbender_parameters.skip_cellbender",
+    "skip_scdblfinder": "$.params.dataset.paramJson.doublets_parameters.skip_scdblfinder"
+}

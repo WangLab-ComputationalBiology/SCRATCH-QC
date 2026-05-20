@@ -1,0 +1,5 @@
+{
+    "outdir": "$.params.dataset.s3|/data/",
+    "organism": "$.params.dataset.paramJson.pipeline_parameters.organism",
+    "modality": "$.params.dataset.paramJson.pipeline_parameters.modality"
+}

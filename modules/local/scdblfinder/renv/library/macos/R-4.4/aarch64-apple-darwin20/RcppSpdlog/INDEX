@@ -1,0 +1,8 @@
+RcppSpdlog-package      R and C++ Interfaces to 'spdlog' C++ Header
+                        Library for Logging
+exampleRsink            spdlog Example using a sink for R
+formatter               Simple Pass-Through Formatter to
+                        'fmt::format()'
+get_stopwatch           R Accessor Functions for spdlog Stopwatch
+log_setup               R Accessor Functions for spdlog Logger
+setLogLevel             spdlog Logging Lever Setter

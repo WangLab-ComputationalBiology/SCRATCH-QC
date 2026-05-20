@@ -1,0 +1,87 @@
+{
+    "ui": {},
+    "form": {
+        "title": "SCRATCH QC",
+        "type": "object",
+        "properties": {
+            "quality_control_parameters": {
+            "title": "Quality Control parameters",
+            "type": "object",
+            "properties": {
+                    "thr_estimate_n_cells": {
+                        "type": "integer",
+                        "default": 300,
+                        "title": "Estimated number of cells"
+                    },
+                    "thr_mean_reads_per_cells": {
+                        "type": "integer",
+                        "default": 25000,
+                        "title": "Mean reads per cell"
+                    },
+                    "thr_median_genes_per_cell": {
+                        "type": "integer",
+                        "default": 900,
+                        "title": "Median genes per cell"
+                    },
+                    "thr_median_umi_per_cell": {
+                        "type": "integer",
+                        "default": 1000,
+                        "title": "Median UMI per cell"
+                    },
+                    "thr_n_feature_rna_min": {
+                        "type": "integer",
+                        "default": 300,
+                        "title": "Minimum features per cell"
+                    },
+                    "thr_n_feature_rna_max": {
+                        "type": "integer",
+                        "default": 7500,
+                        "title": "Maximum features per cell"
+                    },
+                    "thr_percent_mito": {
+                        "type": "integer",
+                        "default": 25,
+                        "title": "Percentage of mitochondrial genes"
+                    },
+                    "thr_n_observed_cells": {
+                        "type": "integer",
+                        "default": 300,
+                        "title": "Number of observed cells"
+                    }
+                }
+            },
+            "cellbender_parameters": {
+                "title": "Cellbender (Beta)",
+                "type": "object",
+                "properties": {
+                    "fpr": {
+                        "type": "number",
+                        "default": 0.01,
+                        "title": "FPR"
+                    },
+                    "epochs": {
+                        "type": "integer",
+                        "default": 150,
+                        "title": "Epoch"
+                    },    
+                    "skip_cellbender": {
+                        "type": "boolean",
+                        "default": true,
+                        "title": "Skipping Cellbender",
+                        "readOnly": true
+                    }
+                }
+            },
+            "doublets_parameters": {
+                "title": "Doublets algorithms",
+                "type": "object",
+                "properties": {
+                    "skip_scdblfinder": {
+                        "type": "boolean",
+                        "title": "Skipping scDblFinder"
+                    }    
+                }
+            }
+        }
+    }
+}

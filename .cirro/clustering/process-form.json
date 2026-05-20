@@ -1,0 +1,66 @@
+{
+    "ui": {},
+    "form": {
+        "title": "SCRATCH Clustering",
+        "type": "object",
+        "properties": {
+            "pipeline_parameters": {
+                "title": "Pipeline parameters",
+                "required": ["seurat_object"],
+                "type": "object",
+                "properties": {
+                    "seurat_object": {
+                        "type": "string",
+                        "title": "Seurat RDS",
+                        "file": "**/*_qc_*_object.RDS",
+                        "pathType": "dataset",
+                        "description": "Select the object for clustering"
+                    }
+                }
+            },
+            "normalization_parameters": {
+            "title": "Normalization parameters",
+            "type": "object",
+            "properties": {
+                        "thr_n_features": {
+                        "type": "integer",
+                        "default": 2000,
+                        "title": "Number features for FindVariableFeatures"
+                    }
+                }
+            },
+            "dimensionality_parameters": {
+            "title": "Dimensionality Reduction parameters",
+            "type": "object",
+            "properties": {
+                    "thr_n_dimensions": {
+                        "type": "integer",
+                        "default": 100,
+                        "title": "Number of PCA dimensions"
+                    }
+                }
+            },
+            "clustering_parameters": {
+            "title": "Clustering parameters",
+            "type": "object",
+            "properties": {
+                    "input_group_plot": {
+                        "type": "string",
+                        "default": "patient_id;timepoint",
+                        "title": "Meta-data columns for UMAP plot"
+                    },
+                    "thr_resolution": {
+                        "type": "number",
+                        "default": 0.5,
+                        "title": "Resolution threshold"
+                    },
+                    "thr_proportion": {
+                        "type": "number",
+                        "default": 0.25,
+                        "title": "Cell proportion for ROGUE calculation"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+export(checkZone,
+       extractInfo,
+       getBorders,
+       getCentroid,
+       getIB,
+       getICoords,
+       getSCoords,
+       getInts,
+       getSets,
+       getZones,
+       openPlot,
+       plotRules,
+       venn)
+import(admisc)
+importFrom("grDevices", "adjustcolor", "col2rgb", "colorRampPalette", "dev.cur",
+       "dev.new", "rgb")
+importFrom("graphics", "lines", "par", "plot", "polygon", "polypath", "text",
+       "points", "title")
+importFrom("utils", "tail", "packageDescription", "read.csv", "capture.output")

@@ -1,0 +1,29 @@
+Venn-class              _'Venn'_ is a S4 class to represent multiple
+                        sets.
+VennPlotData            An S3 class constructor of representing Venn
+                        plot components.
+all_identical           All members of a list have the same elements
+combinations            all possible combinations of n sets
+discern                 Set difference.
+discern_overlap         Calculate region of sets
+get_shape_by_id         Specifying a shape
+get_shape_data          get applicable shape data for Venn object
+get_shapes              Get all shapes
+ggVennDiagram           ggVennDiagram main parser
+launch_app              Launch Reactor Data Shiny App
+overlap                 Intersection of many sets.
+plotData_add_venn       join the shape data with set data
+plot_shape_edge         Plot the set edge of a VennPlotData
+plot_shapes             plot all shapes provided by internal dataset
+plot_venn               plot codes
+print                   S3 method for 'upsetPlotData'
+process_data            get plot data
+process_upset_data      process upset data
+separate_longer_delim   Implement of 'tidyr::separate_longer_delim'
+shapes                  shapes: shape data used to setup Venn plot
+slice_idx               check and format slice name
+unite                   Union of many sets.
+upset-plot              Plot a upset plot
+venn_data               Prepare Venn data
+venn_plot_data          Get VennPlotData slot
+vensets                 Import venn shape coordinates

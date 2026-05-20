@@ -1,0 +1,4 @@
+smoother                Smooth Data in R
+smth                    Smooth Numerical Data
+smth.gaussian           Smooth Using Gaussian Window
+smth.options            Smoother Options
