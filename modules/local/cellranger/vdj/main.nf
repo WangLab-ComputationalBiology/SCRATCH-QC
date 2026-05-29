@@ -25,6 +25,7 @@ process CELLRANGER_VDJ {
                 --id="${sample}" \\
                 --fastqs=. \\
                 --reference="${reference.name}" \\
+                --chain=TR \\
                 --localcores=${task.cpus} \\
                 --localmem=${task.memory.toGiga()}
 
