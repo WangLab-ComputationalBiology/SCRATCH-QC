@@ -34,6 +34,11 @@ def samplesheet_creation(ds: PreprocessDataset) -> pd.DataFrame:
     return sample_table
 
 def setup_input_parameters(ds: PreprocessDataset):
+    # Set alignment mode
+    alignment_mode = ds.params.get("alignment_mode")
+    ds.add_param("multi", alignment_mode == "multi")
+    ds.add_param("demux", alignment_mode == "demux")
+    ds.remove_param("alignment_mode")
 
     # Adding new samplesheet including modality
     ds.logger.info("Changing samplesheet dynamically:")
