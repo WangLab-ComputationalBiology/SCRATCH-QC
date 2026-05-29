@@ -1,5 +1,6 @@
 {
     "outdir": "$.params.dataset.s3|/data/",
     "organism": "$.params.dataset.paramJson.pipeline_parameters.organism",
-    "modality": "$.params.dataset.paramJson.pipeline_parameters.modality"
+    "modality": "$.params.dataset.paramJson.pipeline_parameters.modality",
+    "alignment_mode": "$.params.dataset.paramJson.pipeline_parameters.alignment_mode"
 }

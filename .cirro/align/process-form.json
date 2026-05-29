@@ -5,9 +5,9 @@
         "type": "object",
         "properties": {
             "pipeline_parameters": {
-            "title": "Pipeline parameters",
-            "type": "object",
-            "properties": {
+                "title": "Pipeline parameters",
+                "type": "object",
+                "properties": {
                     "organism": {
                         "type": "string",
                         "title": "Organism",
@@ -25,6 +25,16 @@
                             "GEX",
                             "TCR",
                             "GEX+TCR"
+                        ]
+                    },
+                    "alignment_mode": {
+                        "type": "string",
+                        "title": "Alignment Mode",
+                        "default": "standard",
+                        "enum": [
+                            "standard",
+                            "multi",
+                            "demux"
                         ]
                     }
                 }
