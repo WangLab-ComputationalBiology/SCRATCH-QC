@@ -6,7 +6,8 @@ import os
 
 def samplesheet_creation(ds: PreprocessDataset) -> pd.DataFrame:
     # Clean samplesheet
-    META_COLUMNS = ["sample", "modality", "patient_id", "timepoint", "batch"]
+    REQUIRED_COLUMNS = ["sample", "modality", "patient_id"]
+    OPTIONAL_COLUMNS = ["timepoint", "batch"]
 
     # Make a wide sample_table
     ds.logger.info("Pivoting samplehsheet:")
@@ -24,7 +25,10 @@ def samplesheet_creation(ds: PreprocessDataset) -> pd.DataFrame:
     ds.logger.info("Checking transposed columns:")
     ds.logger.info(sample_table.columns)
 
-    # How can I read the metadata? Is it ds.samplesheet?
+    # Use only metadata columns that are present in the dataset
+    available_optional = [c for c in OPTIONAL_COLUMNS if c in ds.samplesheet.columns]
+    META_COLUMNS = REQUIRED_COLUMNS + available_optional
+
     ds.logger.info("Adding modality column from:")
     sample_table = sample_table.merge(ds.samplesheet[META_COLUMNS])
     
