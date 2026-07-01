@@ -3,7 +3,7 @@ process CELLRANGER_COUNT {
     tag "Running GEX on ${sample}"
     label 'process_high'
 
-    container '/home/sazaidi/Softwares/SCRATCH-QC-main/scratch-align.sif'
+    container 'syedsazaidi/scratch-cellranger8:latest'
 
     input:
         tuple val(sample), path(reads)

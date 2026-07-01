@@ -19,7 +19,7 @@ def is_already_10x_format(sample_name, filename):
         bool: True if filename matches the 10x Genomics format, False otherwise.
     """
 
-    pattern = re.compile(rf'^{re.escape(sample_name)}_S\d+_L\d{{3}}_R[12]_001.fastq.gz$')
+    pattern = re.compile(rf'^{re.escape(sample_name)}_S\d+_L\d{{3}}_R[12]_001\.fastq\.gz$')
     return pattern.match(filename)
 
 def rename_fastqs(sample_name, fastq_dir):
@@ -32,34 +32,34 @@ def rename_fastqs(sample_name, fastq_dir):
     Returns:
         string: Rename files
     """
-    # Iterate over all files in the directory
     for filename in os.listdir(fastq_dir):
         if filename.endswith(".fastq.gz"):
 
             if not is_already_10x_format(sample_name, filename):
-                
+
                 print(f"Renaming {sample_name} {filename}")
-                
-                # Splitting the filename to extract parts
-                parts = filename.split('_')
 
-                # Extract pair number from the part before the ".fastq.gz"
-                part_before_extension = parts[-1].split('.')[0]
-                pair_number = part_before_extension[-1]
+                # Extract R1/R2 from _R1_ or _R2_ in the filename
+                r_match = re.search(r'_R([12])_', filename)
+                pair_number = r_match.group(1) if r_match else '1'
 
-                # Creating string based on 10x format
-                new_filename = f"{sample_name}_S1_L001_R{pair_number}_001.fastq.gz"
+                # Extract lane number (e.g. L001, L002)
+                l_match = re.search(r'_L(\d{3})_', filename)
+                lane = l_match.group(1) if l_match else '001'
 
-                # Renaming the file
+                # Extract sample number from _S<n>_L pattern to avoid matching sample name
+                s_match = re.search(r'_S(\d+)_L', filename)
+                sample_num = s_match.group(1) if s_match else '1'
+
+                new_filename = f"{sample_name}_S{sample_num}_L{lane}_R{pair_number}_001.fastq.gz"
+
                 old_path = os.path.join(fastq_dir, filename)
                 new_path = os.path.join(fastq_dir, new_filename)
                 os.rename(old_path, new_path)
-                
+
             else:
                 print(f"This is 10x ready {filename}")
 
 if __name__ == "__main__":
     sample_name, fastq_dir = sys.argv[1], sys.argv[2]
     rename_fastqs(sample_name, fastq_dir)
-
-
