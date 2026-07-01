@@ -8,13 +8,13 @@
                 "title": "Pipeline parameters",
                 "type": "object",
                 "properties": {
-                    "organism": {
+                    "genome": {
                         "type": "string",
-                        "title": "Organism",
-                        "default": "Human",
+                        "title": "Genome",
+                        "default": "GRCh38",
                         "enum": [
-                            "Human",
-                            "Mouse"
+                            "GRCh38",
+                            "GRCm39"
                         ]
                     },
                     "modality": {

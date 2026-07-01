@@ -13,7 +13,7 @@ def samplesheet_creation(ds: PreprocessDataset) -> pd.DataFrame:
     ds.logger.info("Pivoting samplehsheet:")
 
     # Can I check if has modality column?
-    sample_table = ds.wide_samplesheet(
+    sample_table = ds.pivot_samplesheet(
         index=["sampleIndex", "sample", "lane"],
         columns="read",
         values="file",
