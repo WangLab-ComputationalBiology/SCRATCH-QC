@@ -3,7 +3,7 @@ process CELLRANGER_VDJ {
     tag "Running VDJ on ${sample}"
     label 'process_high'
 
-    container 'syedsazaidi/scratch-cellranger8:latest'
+    container 'syedsazaidi/cellranger:v8.0.1'
 
     input:
         tuple val(sample), path(reads)
