@@ -2,7 +2,7 @@
     "input_merged_object": "$.params.dataset.paramJson.pipeline_parameters.seurat_object",
     "outdir": "$.params.dataset.s3|/data/",
     "thr_n_features": "$.params.dataset.paramJson.normalization_parameters.thr_n_features",
-    "thr_n_dimensions": "$.params.dataset.paramJson.dimensionality_parameters.thr_n_features",
+    "thr_n_dimensions": "$.params.dataset.paramJson.dimensionality_parameters.thr_n_dimensions",
     "input_group_plot": "$.params.dataset.paramJson.clustering_parameters.input_group_plot",
     "thr_resolution": "$.params.dataset.paramJson.clustering_parameters.thr_resolution",
     "thr_proportion": "$.params.dataset.paramJson.clustering_parameters.thr_proportion"
