@@ -5,35 +5,24 @@ import pandas as pd
 import os
 
 def samplesheet_creation(ds: PreprocessDataset) -> pd.DataFrame:
-    # Clean samplesheet
     REQUIRED_COLUMNS = ["sample", "modality", "patient_id"]
     OPTIONAL_COLUMNS = ["timepoint", "batch"]
 
-    # Make a wide sample_table
-    ds.logger.info("Pivoting samplehsheet:")
-
-    # Can I check if has modality column?
-    sample_table = ds.pivot_samplesheet(
-        index=["sampleIndex", "sample", "lane"],
-        columns="read",
-        values="file",
-        column_prefix="fastq_"
-    ).sort_values(
-        by="sample"
-    )
-
-    ds.logger.info("Checking transposed columns:")
-    ds.logger.info(sample_table.columns)
-
-    # Use only metadata columns that are present in the dataset
     available_optional = [c for c in OPTIONAL_COLUMNS if c in ds.samplesheet.columns]
     META_COLUMNS = REQUIRED_COLUMNS + available_optional
 
-    ds.logger.info("Adding modality column from:")
-    sample_table = sample_table.merge(ds.samplesheet[META_COLUMNS])
-    
-    ds.logger.info(sample_table.to_csv(index=None))
+    ds.logger.info("Pivoting samplesheet:")
+
+    sample_table = ds.pivot_samplesheet(
+        index=["sampleIndex", "sample", "lane"],
+        pivot_columns="read",
+        metadata_columns=META_COLUMNS,
+        column_prefix="fastq_"
+    ).sort_values(by="sample")
+
+    ds.logger.info("Checking transposed columns:")
     ds.logger.info(sample_table.columns)
+    ds.logger.info(sample_table.to_csv(index=None))
 
     return sample_table
 
