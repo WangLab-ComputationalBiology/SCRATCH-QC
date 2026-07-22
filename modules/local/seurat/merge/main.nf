@@ -4,7 +4,7 @@ process SEURAT_MERGE {
     label 'process_high'
 
     // container "oandrefonseca/scratch-qc:main"
-    // container "syedsazaidi/scratch-qc:latest"
+    container "syedsazaidi/scratch-qc:latest"
 
     input:
         path(qc_approved)
