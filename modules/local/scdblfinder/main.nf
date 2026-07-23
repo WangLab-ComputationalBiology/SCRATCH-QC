@@ -3,7 +3,7 @@ process SCDBLFINDER {
     tag "Removing doublets"
     label 'process_high'
     
-    executor = 'local'
+    // executor = 'local'
 
     // container "oandrefonseca/scratch-qc:main"
     // container "syedsazaidi/scratch-qc:latest"
