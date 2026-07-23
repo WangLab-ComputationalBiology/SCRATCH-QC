@@ -24,7 +24,7 @@ params:
   input_qc_approved: '/Users/affaustino/Projects/SCRATCH-QC/work/d6/2dde3a01223a736a5c2ff7ddb087ab/SRX5128504_seurat_object.RDS;/Users/affaustino/Projects/SCRATCH-QC/work/d6/2dde3a01223a736a5c2ff7ddb087ab/SRX5128478_seurat_object.RDS'
   input_exp_table: '/Users/affaustino/Projects/SCRATCH-QC/work/d6/2dde3a01223a736a5c2ff7ddb087ab/samplesheet.valid.csv'
   n_threads: 8
-  n_memory: 16
+  n_memory: 4
   work_directory: !expr here::here()
   auto_save: TRUE
 ---
