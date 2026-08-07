@@ -107,16 +107,49 @@ for(sub_directory in c('figures', 'objects', 'log')) {
 ```{r sample_level}
 #| echo: false
 
-sample_metrics <- read_csv(file = csv_metrics)
+raw_metrics <- read_csv(file = csv_metrics, show_col_types = FALSE)
 
-string_to_numeric <- function(x) {
-  as.numeric(sub('%', '', x))
+# Normalise a metric value to numeric: drop thousands separators, percent
+# signs, and cellranger's "---" placeholder for unavailable values.
+clean_numeric <- function(x) {
+  x <- as.character(x)
+  x <- gsub(',', '', x, fixed = TRUE)
+  x <- sub('%', '', x)
+  x[x %in% c('---', '', 'NA')] <- NA
+  as.numeric(x)
 }
 
-sample_metrics <- sample_metrics %>%
-  mutate_if(
-    is.character, string_to_numeric
+if (all(c("Metric Name", "Metric Value") %in% colnames(raw_metrics))) {
+
+  # cellranger multi: long/tidy metrics_summary.csv. Per-sample cell metrics
+  # live under Category == "Cells"; metrics not reported per demultiplexed
+  # sample (mean reads per cell, sequencing saturation are pool-level and
+  # shared across samples) are taken from Category == "Library".
+  gex <- raw_metrics %>% dplyr::filter(`Library Type` == "Gene Expression")
+
+  pick <- function(category, metric) {
+    v <- gex %>%
+      dplyr::filter(Category == category, `Metric Name` == metric) %>%
+      dplyr::pull(`Metric Value`)
+    if (length(v) == 0) NA_real_ else clean_numeric(v[[1]])
+  }
+
+  sample_metrics <- tibble::tibble(
+    `Estimated Number of Cells`  = pick("Cells",   "Cells"),
+    `Mean Reads per Cell`        = pick("Library", "Mean reads per cell"),
+    `Median Genes per Cell`      = pick("Cells",   "Median genes per cell"),
+    `Median UMI Counts per Cell` = pick("Cells",   "Median UMI counts per cell"),
+    `Sequencing Saturation`      = pick("Library", "Sequencing saturation")
   )
+
+} else {
+
+  # cellranger count: wide, single-row metrics_summary.csv. Coerce the
+  # character measure columns (percentages, comma-grouped counts) to numeric.
+  sample_metrics <- raw_metrics %>%
+    mutate_if(is.character, clean_numeric)
+
+}
 
 #
 
@@ -124,22 +157,22 @@ check_list <- c(FALSE, FALSE, FALSE, FALSE)
 
 #
 
-if(sample_metrics$`Estimated Number of Cells` >= thr_estimate_n_cells) {
+if(isTRUE(sample_metrics$`Estimated Number of Cells` >= thr_estimate_n_cells)) {
   check_list[1] <- TRUE #300
 
 }
 
-if(sample_metrics$`Mean Reads per Cell` >= thr_mean_reads_per_cells) {
+if(isTRUE(sample_metrics$`Mean Reads per Cell` >= thr_mean_reads_per_cells)) {
   check_list[2] <- TRUE #25000
 
 }
 
-if(sample_metrics$`Median Genes per Cell` >= thr_median_genes_per_cell) {
+if(isTRUE(sample_metrics$`Median Genes per Cell` >= thr_median_genes_per_cell)) {
   check_list[3] <- TRUE #900
 
 }
 
-if(sample_metrics$`Median UMI Counts per Cell` >= thr_median_umi_per_cell) {
+if(isTRUE(sample_metrics$`Median UMI Counts per Cell` >= thr_median_umi_per_cell)) {
   check_list[4] <- TRUE #1000
 
 }
@@ -156,7 +189,7 @@ if(all(check_list)) {
 
 } else {
 
-  if(sample_metrics$`Sequencing Saturation` <= 70) {
+  if(isTRUE(sample_metrics$`Sequencing Saturation` <= 70)) {
 
     status_flag <- "SAMPLE:FIXABLE"
 
