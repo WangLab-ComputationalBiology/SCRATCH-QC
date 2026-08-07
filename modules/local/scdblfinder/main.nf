@@ -2,8 +2,6 @@ process SCDBLFINDER {
 
     tag "Removing doublets"
     label 'process_high'
-    
-    executor = 'local'
 
     container "syedsazaidi/scratch-qc:latest"
 
