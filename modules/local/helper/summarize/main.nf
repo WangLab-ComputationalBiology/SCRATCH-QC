@@ -3,9 +3,7 @@ process HELPER_SUMMARIZE {
     tag "Rendering QC Table"
     label 'process_single'
 
-    // container "oandrefonseca/scratch-qc:main"
-    // container "syedsazaidi/scratch-qc:latest"
-    container '/home/sazaidi/Softwares/SCRATCH-QC-mainWORKINGVERSION/scratch-qc.sif'
+    container "syedsazaidi/scratch-qc:latest"
 
     input:
         path(project_metrics)

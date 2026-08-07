@@ -5,8 +5,7 @@ process SCDBLFINDER {
     
     executor = 'local'
 
-    // container "oandrefonseca/scratch-qc:main"
-    // container "syedsazaidi/scratch-qc:latest"
+    container "syedsazaidi/scratch-qc:latest"
 
     input:
         path(seurat_object)

@@ -24,7 +24,7 @@ params:
   input_qc_approved: '/Users/affaustino/Projects/SCRATCH-QC/work/d6/2dde3a01223a736a5c2ff7ddb087ab/SRX5128504_seurat_object.RDS;/Users/affaustino/Projects/SCRATCH-QC/work/d6/2dde3a01223a736a5c2ff7ddb087ab/SRX5128478_seurat_object.RDS'
   input_exp_table: '/Users/affaustino/Projects/SCRATCH-QC/work/d6/2dde3a01223a736a5c2ff7ddb087ab/samplesheet.valid.csv'
   n_threads: 8
-  n_memory: 4
+  n_memory: 16
   work_directory: !expr here::here()
   auto_save: TRUE
 ---
@@ -95,8 +95,10 @@ for(sub_directory in c('data', 'figures')) {
 
 metadata <- readr::read_csv(file = input_exp_table)
 metadata <- metadata %>%
-#   select(-c(sampleIndex, fastq_1, fastq_2)) %>%
-  select(-c(fastq_1, fastq_2)) %>%
+  # Drop non-metadata columns if present. any_of() tolerates their absence,
+  # so the same samplesheet can carry matrix paths (h5, metrics_csv) and still
+  # be reused here as the metadata table without erroring on missing columns.
+  select(-any_of(c("sampleIndex", "fastq_1", "fastq_2", "h5", "metrics_csv"))) %>%
   distinct() %>%
   as.data.frame()
 

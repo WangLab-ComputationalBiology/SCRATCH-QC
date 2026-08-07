@@ -3,8 +3,7 @@ process SEURAT_MERGE {
     tag "Merging post-QC samples"
     label 'process_high'
 
-    // container "oandrefonseca/scratch-qc:main"
-    // container "syedsazaidi/scratch-qc:latest"
+    container "syedsazaidi/scratch-qc:latest"
 
     input:
         path(qc_approved)

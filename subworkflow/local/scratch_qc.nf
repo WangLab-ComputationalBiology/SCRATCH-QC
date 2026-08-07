@@ -11,8 +11,8 @@ include { SCDBLFINDER               } from '../../modules/local/scdblfinder/main
 workflow SCRATCH_QC {
 
     take:
-        ch_gex_matrices // channel: [ val(meta), [ ... ] ]
-        ch_exp_table    // channel
+        ch_cell_matrices // channel: [ val(sample), path(metrics_csv), path(h5) ]
+        ch_exp_table     // channel: path to samplesheet with metadata columns
 
     main:
         
@@ -37,24 +37,8 @@ workflow SCRATCH_QC {
             .combine(ch_page_config)
             .collect()
 
-        // Grouping cellranger outputs
-        ch_cell_matrices = ch_gex_matrices
-            .map { file -> 
-                def sample = file.parent.parent.name
-                return [sample, file]
-            }
-        
-        ch_cell_matrices = ch_cell_matrices
-            .groupTuple()
-
-        // Ensuring file order
-        ch_cell_matrices = ch_cell_matrices
-            .map{ sample, files -> 
-                def csvFile = files.find { it.toString().endsWith("metrics_summary.csv") }
-                def h5File = files.find { it.toString().endsWith("filtered_feature_bc_matrix.h5") }
-                [sample, csvFile, h5File]
-            }
-
+        // Matrices arrive pre-resolved from the samplesheet as
+        // [ sample, metrics_csv, h5 ] — one row per sample, across all datasets.
         ch_cell_matrices
             .view()
 
