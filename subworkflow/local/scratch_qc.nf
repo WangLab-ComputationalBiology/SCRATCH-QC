@@ -69,9 +69,15 @@ workflow SCRATCH_QC {
             ch_page_config
         )
 
-        // // Filter poor quality samples
+        // Keep QC-passing samples for merging: SUCCESS and FIXABLE. FIXABLE
+        // samples are borderline but retained so they can be reviewed (and
+        // dropped later if desired); they stay flagged in the QC report. Only
+        // FAILURE samples are excluded from the merge.
         ch_qc_approved = SEURAT_QUALITY.out.status
-            .filter{sample, object, status -> status.toString().endsWith('SUCCESS.txt')}
+            .filter{sample, object, status ->
+                def log_name = status.toString()
+                log_name.endsWith('SUCCESS.txt') || log_name.endsWith('FIXABLE.txt')
+            }
             .map{sample, object, status -> object}
             .collect()
 
