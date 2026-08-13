@@ -7,6 +7,8 @@ include { CELLBENDER                } from '../../modules/local/cellbender/main.
 include { HELPER_SUMMARIZE          } from '../../modules/local/helper/summarize/main.nf'
 include { SEURAT_MERGE              } from '../../modules/local/seurat/merge/main.nf'
 include { SCDBLFINDER               } from '../../modules/local/scdblfinder/main.nf'
+include { EXPORT_H5AD as EXPORT_H5AD_MERGED  } from '../../modules/local/export_h5ad/main.nf'
+include { EXPORT_H5AD as EXPORT_H5AD_SINGLET } from '../../modules/local/export_h5ad/main.nf'
 
 workflow SCRATCH_QC {
 
@@ -95,6 +97,19 @@ workflow SCRATCH_QC {
 
         ch_merge_object = SEURAT_MERGE.out.seurat_rds
 
+        // Portable, self-contained .h5ad of the merged object (streamed from the
+        // BPCells store, so it never realizes the full matrix). Opens in both R
+        // (BPCells/anndata) and Python (scanpy).
+        if(params.export_h5ad) {
+
+            EXPORT_H5AD_MERGED(
+                SEURAT_MERGE.out.seurat_rds
+                    .combine(SEURAT_MERGE.out.bpcells_store)
+                    .map{ rds, store -> tuple('merged', rds, store) }
+            )
+
+        }
+
         // Filtering doublets
         if(!params.skip_scdblfinder) {
 
@@ -104,6 +119,17 @@ workflow SCRATCH_QC {
                 ch_notebook_scdblfinder,
                 ch_page_config
             )
+
+            // Matching .h5ad for the doublet-removed (singlet) object.
+            if(params.export_h5ad) {
+
+                EXPORT_H5AD_SINGLET(
+                    SCDBLFINDER.out.seurat_rds
+                        .combine(SCDBLFINDER.out.bpcells_store)
+                        .map{ rds, store -> tuple('singlet', rds, store) }
+                )
+
+            }
 
         }
 
