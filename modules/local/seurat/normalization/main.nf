@@ -3,11 +3,13 @@ process SEURAT_NORMALIZE {
     tag "Running normalization and dimensionality reduction"
     label 'process_high'
 
-    // container "oandrefonseca/scratch-qc:main"
-    // container "syedsazaidi/scratch-qc:latest"
+    container "syedsazaidi/scratch-cluster:latest"
 
     input:
         path(seurat_object)
+        // BPCells on-disk counts store; staged at the same relative path the
+        // merged object references so its lazy layers resolve.
+        path(bpcells_store, stageAs: 'data/bpcells_counts')
         path(notebook_normalize)
         path(page_config)
 

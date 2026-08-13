@@ -8,6 +8,9 @@ process SEURAT_CLUSTER {
 
     input:
         path(seurat_object)
+        // BPCells on-disk counts store; staged at the same relative path the
+        // reduction object references so its lazy layers resolve.
+        path(bpcells_store, stageAs: 'data/bpcells_counts')
         path(notebook_clustering)
         path(page_config)
 

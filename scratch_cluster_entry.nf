@@ -15,7 +15,11 @@ workflow {
 
     """
 
+    // The merged object is BPCells-backed: its counts live in an on-disk store
+    // (data/bpcells_counts) published next to the RDS. Pass both downstream so
+    // the on-disk references resolve.
     ch_seurat_object = Channel.fromPath(params.input_merged_object, checkIfExists: true)
+        .map { rds -> tuple(rds, file("${rds.parent}/bpcells_counts", checkIfExists: true)) }
 
     SCRATCH_CLUSTERING(
         ch_seurat_object

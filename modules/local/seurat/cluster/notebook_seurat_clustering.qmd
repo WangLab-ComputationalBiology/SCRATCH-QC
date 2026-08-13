@@ -80,6 +80,7 @@ library(dplyr)
 library(ggplot2)
 library(patchwork)
 library(Seurat)
+library(BPCells)
 library(ROGUE)
 library(SCP)
 
@@ -93,8 +94,9 @@ if(!dir.exists(work_directory)) {
   dir.create(work_directory, recursive = T)
 }
 
+# showWarnings = FALSE: data/ already exists (the BPCells store is staged there).
 for(sub_directory in c('data', 'figures')) {
-  dir.create(paste0(work_directory, '/', sub_directory))
+  dir.create(paste0(work_directory, '/', sub_directory), showWarnings = FALSE)
 }
 
 ```
@@ -104,7 +106,9 @@ for(sub_directory in c('data', 'figures')) {
 ```{r loading_rds}
 #| code-fold: true
 
-# Reading seurat object
+# Reading the reduction object. It is BPCells-backed: its counts/data layers are
+# lazy transforms over the on-disk store staged at data/bpcells_counts, so
+# BPCells must be loaded (above) for the object to deserialize and resolve.
 seurat_object <- readRDS(file = seurat_object)
 
 # Cell number

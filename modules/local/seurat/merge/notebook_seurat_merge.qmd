@@ -70,6 +70,7 @@ library(readr)
 library(dplyr)
 library(ggplot2)
 library(Seurat)
+library(BPCells)
 
 ```
 
@@ -117,22 +118,72 @@ sample_label <- setNames(
   sample_label
 )
 
-# Reading approved samples
-seurat_object_list <- list()
+# On-disk store for the per-sample BPCells matrices. Kept under data/ so it is
+# published with the merged object.
+bpcells_root <- file.path('data', 'bpcells')
+if (dir.exists(bpcells_root)) unlink(bpcells_root, recursive = TRUE)
+dir.create(bpcells_root, recursive = TRUE)
+
+# Read each QC-approved sample, prefix its barcodes, and persist its counts as
+# an on-disk BPCells matrix. BPCells uses 64-bit indexing, so the joined matrix
+# is NOT bound by the ~2.1 billion non-zero ceiling of an in-memory dgCMatrix
+# (which caused the 'vector::reserve' failure in JoinLayers at cohort scale).
+counts_list <- list()
+meta_list   <- list()
 
 for (label in names(sample_label)) {
-  
-  seurat_object_list[[label]] <- readRDS(file = sample_label[[label]])
-  seurat_object_list[[label]]$raw_cell_id <- Cells(seurat_object_list[[label]])
-  
-  seurat_object_list[[label]] <- RenameCells(
-    seurat_object_list[[label]], add.cell.id = label)
 
+  obj <- readRDS(file = sample_label[[label]])
+  obj$raw_cell_id <- Cells(obj)
+  obj <- RenameCells(obj, add.cell.id = label)
+
+  counts <- SeuratObject::LayerData(obj, assay = 'RNA', layer = 'counts')
+
+  mat_dir <- file.path(bpcells_root, label)
+  BPCells::write_matrix_dir(mat = counts, dir = mat_dir, overwrite = TRUE)
+
+  counts_list[[label]] <- BPCells::open_matrix_dir(dir = mat_dir)
+  meta_list[[label]]   <- obj@meta.data
+
+  rm(obj, counts); gc()
 }
 
-# Merge all the objects in the list
-seurat_object <- purrr::reduce(
-  seurat_object_list, project = project_name, merge, do.normalize = FALSE)
+# Align to a common gene set (identical when samples share a reference) and
+# column-bind the on-disk matrices into a single 64-bit-backed counts matrix.
+gene_sets    <- lapply(counts_list, rownames)
+common_genes <- Reduce(intersect, gene_sets)
+
+if (!all(vapply(gene_sets, function(g) identical(g, common_genes), logical(1)))) {
+  message(sprintf('Aligning samples to %d shared genes', length(common_genes)))
+  counts_list <- lapply(counts_list, function(m) m[common_genes, ])
+}
+
+combined_counts <- do.call(cbind, counts_list)
+
+# Consolidate the concatenated matrix into ONE on-disk store at a predictable
+# relative path (data/bpcells_counts). Downstream steps stage this directory at
+# the same relative location so the object's on-disk references resolve. Then
+# drop the now-redundant per-sample stores.
+counts_store <- file.path('data', 'bpcells_counts')
+if (dir.exists(counts_store)) unlink(counts_store, recursive = TRUE)
+BPCells::write_matrix_dir(mat = combined_counts, dir = counts_store)
+combined_counts <- BPCells::open_matrix_dir(dir = counts_store)
+unlink(bpcells_root, recursive = TRUE)
+
+# Combined per-cell metadata (common columns; barcodes already made unique).
+# Drop the auto-computed count columns so CreateSeuratObject regenerates them.
+common_cols   <- Reduce(intersect, lapply(meta_list, colnames))
+combined_meta <- do.call(rbind, lapply(meta_list, function(m) m[, common_cols, drop = FALSE]))
+combined_meta <- combined_meta[, setdiff(colnames(combined_meta),
+                                         c('nCount_RNA', 'nFeature_RNA')), drop = FALSE]
+
+# One object with a single BPCells-backed counts layer: no in-memory
+# JoinLayers/StitchMatrix is required, so the 32-bit ceiling never applies.
+seurat_object <- CreateSeuratObject(
+  counts    = combined_counts,
+  project   = project_name,
+  meta.data = combined_meta
+)
 
 ```
 
@@ -141,9 +192,12 @@ seurat_object <- purrr::reduce(
 ```{r seurat_rejoin}
 #| code-fold: true
 
-if(length(seurat_object@assays$RNA@layers) > 1) {
-  
-  seurat_object <- JoinLayers(seurat_object) 
+# The counts were column-bound into a single BPCells-backed layer above, so
+# there is normally only one layer here and nothing to join. The guard remains
+# so the notebook still behaves correctly if a multi-layer object is ever passed.
+if (length(SeuratObject::Layers(seurat_object, assay = 'RNA')) > 1) {
+
+  seurat_object <- JoinLayers(seurat_object)
 
 }
 
@@ -180,11 +234,20 @@ seurat_object <- AddMetaData(
 #| code-fold: true
 #| column: screen-inset-shaded
 
-DT::datatable(seurat_object@meta.data, 
+# Preview a random subset of cells. Embedding the full metadata (potentially
+# millions of rows at cohort scale) into the HTML would exhaust memory / produce
+# an unusably large report.
+preview_meta <- seurat_object@meta.data
+if (nrow(preview_meta) > 2000) {
+  preview_meta <- preview_meta[sample(nrow(preview_meta), 2000), , drop = FALSE]
+}
+
+DT::datatable(preview_meta,
+    caption = sprintf('Random preview of 2,000 of %s total cells', format(ncol(seurat_object), big.mark = ',')),
     class = 'cell-border stripe',
     rownames = FALSE,
     filter = 'top',
-    width = '100%', 
+    width = '100%',
     options = list(scrollX = TRUE))
 
 ```

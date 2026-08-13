@@ -13,9 +13,16 @@ workflow SCRATCH_CLUSTERING {
     ch_versions  = Channel.empty()
 
     take:
-        ch_merge_object // channel: [ val(meta), [ ... ] ]
+        ch_merge_object // channel: tuple( path(merged_rds), path(bpcells_store) )
 
     main:
+
+        // Split the merged RDS from its on-disk BPCells store. The store is the
+        // same base counts matrix for every downstream step (normalization and
+        // clustering apply lazy transforms on top of it), so expose it as a
+        // reusable value channel and stage it into each process.
+        ch_merge_rds     = ch_merge_object.map { rds, store -> rds }
+        ch_bpcells_store = ch_merge_object.map { rds, store -> store }.first()
 
         // Importing notebook
         ch_notebook_normalize  = Channel.fromPath(params.notebook_normalize, checkIfExists: true)
@@ -38,16 +45,18 @@ workflow SCRATCH_CLUSTERING {
 
         // Normalizing dataset
         SEURAT_NORMALIZE(
-            ch_merge_object,
+            ch_merge_rds,
+            ch_bpcells_store,
             ch_notebook_normalize,
             ch_page_config
         )
 
         ch_normalized_object = SEURAT_NORMALIZE.out.seurat_rds
 
-        // Performing clustering        
-        SEURAT_CLUSTER(          
+        // Performing clustering
+        SEURAT_CLUSTER(
             ch_normalized_object,
+            ch_bpcells_store,
             ch_notebook_clustering,
             ch_page_config
         )
