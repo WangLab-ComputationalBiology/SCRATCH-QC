@@ -100,6 +100,7 @@ workflow SCRATCH_QC {
 
             SCDBLFINDER(
                 ch_merge_object,
+                SEURAT_MERGE.out.bpcells_store,
                 ch_notebook_scdblfinder,
                 ch_page_config
             )

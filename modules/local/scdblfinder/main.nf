@@ -7,6 +7,9 @@ process SCDBLFINDER {
 
     input:
         path(seurat_object)
+        // BPCells on-disk counts store backing the merged object; staged at the
+        // relative path its lazy layers reference so NormalizeData can read it.
+        path(bpcells_store, stageAs: 'data/bpcells_counts')
         path(notebook_scdblfinder)
         path(page_config)
 

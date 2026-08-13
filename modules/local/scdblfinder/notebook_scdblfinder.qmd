@@ -69,6 +69,7 @@ library(readr)
 library(dplyr)
 library(ggplot2)
 library(Seurat)
+library(BPCells)
 library(DT)
 library(SingleCellExperiment)
 library(scDblFinder)
@@ -87,8 +88,9 @@ if(!dir.exists(work_directory)) {
   dir.create(work_directory, recursive = T)
 }
 
+# showWarnings = FALSE: data/ already exists (the BPCells store is staged there).
 for(sub_directory in c('data', 'figures', 'figures/doublet')) {
-  dir.create(paste0(work_directory, '/', sub_directory))
+  dir.create(paste0(work_directory, '/', sub_directory), showWarnings = FALSE)
 }
 
 ```
@@ -97,8 +99,25 @@ for(sub_directory in c('data', 'figures', 'figures/doublet')) {
 
 ```{r loading_rds}
 
-# Reading seurat object
-seurat_object <- readRDS(file = seurat_object)
+# The merged object is BPCells-backed. Its counts live in the on-disk store
+# staged at data/bpcells_counts. Rebuild the object from that store plus the
+# saved per-cell metadata so we never depend on the (possibly stale) matrix
+# path baked into the RDS by the upstream merge task.
+loaded_object <- readRDS(file = seurat_object)
+
+disk_counts <- BPCells::open_matrix_dir(dir = file.path('data', 'bpcells_counts'))
+
+keep_meta <- loaded_object@meta.data
+keep_meta <- keep_meta[, setdiff(colnames(keep_meta),
+                                 c('nCount_RNA', 'nFeature_RNA')), drop = FALSE]
+
+seurat_object <- CreateSeuratObject(
+  counts    = disk_counts,
+  project   = project_name,
+  meta.data = keep_meta
+)
+
+rm(loaded_object); gc()
 
 # Setting random seed
 random_seed <- 2203

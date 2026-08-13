@@ -13,6 +13,10 @@ process SEURAT_MERGE {
 
     output:
         path("data/${params.project_name}_qc_merged_object.RDS"), emit: seurat_rds
+        // On-disk BPCells counts store backing the merged object. Emitted so
+        // downstream steps (e.g. SCDBLFINDER) can stage it at the same relative
+        // path the object's lazy layers reference.
+        path("data/bpcells_counts"), emit: bpcells_store
         path("report/${notebook_merge.baseName}.html")
 
     when:
@@ -26,9 +30,10 @@ process SEURAT_MERGE {
     stub:
         def param_file = task.ext.args ? "-P input_qc_approved:\'${qc_approved.join(';')}\' -P input_exp_table:${exp_table} -P ${task.ext.args}" : ""
         """
-        mkdir -p report data figures/merge
+        mkdir -p report data/bpcells_counts figures/merge
 
         touch data/${params.project_name}_qc_merged_object.RDS
+        touch data/bpcells_counts/matrix.mtx
         touch report/${notebook_merge.baseName}.html
 
         """
