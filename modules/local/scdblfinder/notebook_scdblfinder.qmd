@@ -125,64 +125,77 @@ set.seed(random_seed)
 
 ```
 
-```{r}
+## Per-sample doublet detection
+
+Doublets form **within a single 10x capture**, so scDblFinder is run
+independently on each sample (`orig.ident`) — the same partitioning
+`scDblFinder(..., samples=)` performs internally, but done explicitly so the
+full matrix is never realized at once. The merged object is BPCells-backed, so
+each sample's columns are subset lazily and only that one small sample is
+materialized in memory at a time. This never approaches the 2.1B non-zero
+`dgCMatrix` ceiling a full-cohort realization would hit, so it scales to
+arbitrarily large cohorts.
+
+Results are reproducible: a fixed RNG seed is used, samples are processed in
+sorted order, and `bplapply` returns results in input order regardless of
+execution order.
+
+```{r scdblfinder_per_sample}
 #| warning: false
 
-seurat_temporary <- NormalizeData(object = seurat_object)
-seurat_temporary <- FindVariableFeatures(object = seurat_temporary)
-seurat_temporary <- ScaleData(object = seurat_temporary)
-seurat_temporary <- RunPCA(object = seurat_temporary)
-seurat_temporary <- RunUMAP(object = seurat_temporary, dims = 1:20)
+# BPCells-backed counts for the whole merged object (lazy; nothing realized yet).
+counts_mat <- SeuratObject::LayerData(seurat_object, assay = 'RNA', layer = 'counts')
 
-seurat_temporary <- FindNeighbors(seurat_temporary, dims = 1:10)
-seurat_temporary <- FindClusters(seurat_temporary, resolution = 0.5)
+# Map every cell to its sample and iterate samples in a fixed (sorted) order.
+cell_sample <- as.character(seurat_object$orig.ident)
+names(cell_sample) <- colnames(seurat_object)
+sample_ids  <- sort(unique(cell_sample))
 
-```
+detect_one <- function(s) {
+  cells <- names(cell_sample)[cell_sample == s]
 
-## Converting object
+  # Realize ONLY this sample's counts (a small dgCMatrix, never near the ceiling
+  # that realizing the full cohort at once would hit).
+  sub <- methods::as(counts_mat[, cells, drop = FALSE], 'dgCMatrix')
 
-```{r scdblfinder}
+  tryCatch({
+    tbl <- as.data.frame(scDblFinder(sub, returnType = 'table'))
+    # returnType='table' includes the artificial doublets used internally; keep
+    # only the real cells so rownames line up with the object's barcodes.
+    tbl <- tbl[tbl$type == 'real', , drop = FALSE]
+    data.frame(
+      row.names        = rownames(tbl),
+      class            = as.character(tbl$class),
+      scdbl_score      = tbl$score,
+      stringsAsFactors = FALSE
+    )
+  }, error = function(e) {
+    # Degenerate/too-few-cells sample: keep every cell (conservative) instead of
+    # dropping the sample, and record why.
+    message(sprintf("scDblFinder failed for '%s' (%s); keeping all its cells as singlet",
+                    s, conditionMessage(e)))
+    data.frame(
+      row.names        = cells,
+      class            = 'singlet',
+      scdbl_score      = NA_real_,
+      stringsAsFactors = FALSE
+    )
+  })
+}
 
-# Converting to SingleCellExperiment object
-sce <- as.SingleCellExperiment(seurat_temporary)
+# Parallel across samples but reproducible: BiocParallel seeds each worker's RNG
+# stream from RNGseed. (Serial + set.seed per sample would be equally
+# reproducible; this is just faster for large cohorts.)
+bp <- BiocParallel::MulticoreParam(workers = max(1L, as.integer(n_threads)),
+                                   RNGseed = random_seed)
+calls_list <- BiocParallel::bplapply(sample_ids, detect_one, BPPARAM = bp)
 
-# Find sample-based doublets
-dbl_sample <- scDblFinder(
-  sce, 
-  samples = 'orig.ident', 
-  returnType = "table"
-  )
+dbl_sample <- do.call(rbind, calls_list)
+# Align to the object's cell order (barcodes are already unique across samples).
+dbl_sample <- dbl_sample[colnames(seurat_object), , drop = FALSE]
 
-# BPPARAM = BiocParallel::MulticoreParam(n_threads, RNGseed = random_seed)
-
-dbl_sample <- dbl_sample %>%
-  as.data.frame()
-
-```
-
-```{r}
-
-# Find cluster-based doublets
-dbl_cluster <- scDblFinder(
-  sce, 
-  clusters = 'seurat_clusters',
-  returnType = "table"
-  )
-
-dbl_cluster <- dbl_cluster %>%
-  as.data.frame()
-
-```
-
-```{r}
-
-# Sample-sampled prediction
-dbl_sample <- dbl_sample[,c("class", "type")]
-
-# Cluster-based prediction
-dbl_cluster <- dbl_cluster[,c("cluster", "class", "type")]
-colnames(dbl_cluster) <- 
-  c("cluster", "cluster_class", "cluster_type")
+# Per-sample singlet/doublet tally.
+print(table(sample = cell_sample, class = dbl_sample$class))
 
 ```
 
@@ -195,23 +208,25 @@ seurat_object <- AddMetaData(
   seurat_object,
   metadata = dbl_sample
 )
-print(dbl_sample)
-
-seurat_object <- AddMetaData(
-  seurat_object,
-  metadata = dbl_cluster
-)
 
 ```
 
 ```{r meta_inspection}
 #| column: screen-inset-shaded
 
-datatable(seurat_object@meta.data, 
+# Cap the interactive table: embedding every cell would bloat the HTML for
+# large cohorts. Show a reproducible random sample when the object is big.
+meta_preview <- seurat_object@meta.data
+if (nrow(meta_preview) > 2000) {
+  set.seed(random_seed)
+  meta_preview <- meta_preview[sample(nrow(meta_preview), 2000), , drop = FALSE]
+}
+
+datatable(meta_preview,
     class = 'cell-border stripe',
     rownames = FALSE,
     filter = 'top',
-    width = '100%', 
+    width = '100%',
     options = list(scrollX = TRUE)
     )
 
@@ -289,22 +304,59 @@ The @fig-doublet-composition provides doublets/singlets distribution across all 
 
 ## Removing doublets
 
-```{r}
+```{r remove_doublets}
 
-seurat_sample_object <- subset(
+n_before <- ncol(seurat_object)
+
+singlet_object <- subset(
   seurat_object,
   subset = class == "singlet"
 )
 
-seurat_cluster_object <- subset(
-  seurat_object,
-  subset = cluster_class == "singlet"
+n_after <- ncol(singlet_object)
+
+```
+
+The singlet subset is still a lazy BPCells view over the full merged store. So
+that downstream steps (which rebuild the object from `data/bpcells_counts`)
+never see the removed doublets, we write a fresh store containing **only** the
+singlet counts and point the saved object at it.
+
+```{r write_singlet_store}
+
+store_dir <- file.path('data', 'bpcells_counts')
+tmp_store <- file.path('data', '.bpcells_counts_singlets')
+
+# Lazy singlet counts (still reference the staged full store).
+singlet_counts <- SeuratObject::LayerData(singlet_object, assay = 'RNA', layer = 'counts')
+
+# Write the singlet-only store to a temp dir FIRST — this reads from the staged
+# full store, so it must exist until the write completes.
+if (dir.exists(tmp_store)) unlink(tmp_store, recursive = TRUE, force = TRUE)
+BPCells::write_matrix_dir(mat = singlet_counts, dir = tmp_store)
+
+# Now replace the staged store (a symlink to the merge task's output) with the
+# singlet store at the path downstream steps expect.
+unlink(store_dir, recursive = TRUE, force = TRUE)
+file.rename(tmp_store, store_dir)
+singlet_counts <- BPCells::open_matrix_dir(dir = store_dir)
+
+# Rebuild the object from the singlet store so its counts layer references the
+# new on-disk store (drop auto-computed count columns; they are regenerated).
+keep_meta <- singlet_object@meta.data
+keep_meta <- keep_meta[, setdiff(colnames(keep_meta),
+                                 c('nCount_RNA', 'nFeature_RNA')), drop = FALSE]
+
+singlet_object <- CreateSeuratObject(
+  counts    = singlet_counts,
+  project   = project_name,
+  meta.data = keep_meta
 )
 
 ```
 
 ::: {.callout-warning}
-Total cells after doublets removal **`r dim(seurat_object)[2]`**.
+Total cells after doublet removal **`r n_after`** (removed **`r n_before - n_after`** of **`r n_before`**).
 :::
 
 ## Saving Seurat object
@@ -312,10 +364,8 @@ Total cells after doublets removal **`r dim(seurat_object)[2]`**.
 ```{r object_dump}
 
 if(auto_save) {
-  
-  saveRDS(seurat_sample_object, file = paste0('data/', project_name, '_qc_dbl_sample_object.RDS'))
 
-  saveRDS(seurat_cluster_object, file = paste0('data/', project_name, '_qc_dbl_cluster_object.RDS'))
+  saveRDS(singlet_object, file = paste0('data/', project_name, '_qc_dbl_singlet_object.RDS'))
 
 }
 

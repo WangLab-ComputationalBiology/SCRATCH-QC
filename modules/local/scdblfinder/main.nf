@@ -15,6 +15,9 @@ process SCDBLFINDER {
 
     output:
         path("data/${params.project_name}_qc_*.RDS"), emit: seurat_rds
+        // Singlet-only BPCells store backing the de-doubleted object; published
+        // alongside the RDS so downstream clustering can stage it.
+        path("data/bpcells_counts"), emit: bpcells_store
         path("report/${notebook_scdblfinder.baseName}.html")
         path("_freeze/**/figure-html/*.png"), emit: figures
 
@@ -28,13 +31,13 @@ process SCDBLFINDER {
         """
     stub:
         """
-        mkdir -p report data figures 
+        mkdir -p report data/bpcells_counts figures
         mkdir -p _freeze/DUMMY/figure-html
-        
+
         touch _freeze/DUMMY/figure-html/FILE.png
 
-        touch data/${params.project_name}_qc_sample_object.RDS
-        touch data/${params.project_name}_qc_cluster_object.RDS
+        touch data/${params.project_name}_qc_dbl_singlet_object.RDS
+        touch data/bpcells_counts/matrix.mtx
 
         touch report/${notebook_scdblfinder.baseName}.html
 
