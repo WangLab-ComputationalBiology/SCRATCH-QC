@@ -51,7 +51,7 @@ ARG R_DEPS="c(\
     )"
 
 ARG DEV_DEPS="c(\
-    'bnprks/BPCells', \
+    'bnprks/BPCells/r', \
     'cellgeni/sceasy', \
     'zhanghao-njmu/SCP', \
     'immunogenomics/presto' \
